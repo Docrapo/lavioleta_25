@@ -1,0 +1,134 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; /* IMPORTANTE: Hace que mis tamaños dependan del width que le de a la caja (elemento), sin contar el tamaño de bordes, margenes o paddings */
+}
+/* article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; 
+} */
+header {
+  width: 100%;
+  text-align: center;
+  background-color: #202020;
+}
+header > img {
+  width: 100%; /* Que su tamaño se mantenga proporcional pero que siga la regla de abajo */
+  max-width: 1000px; /* Que crezca maximo a 1000px  */
+}
+h1 {
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  background-color: rgb(255, 226, 152);
+}
+
+main {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  /* align-content: stretch; */ /* Estrecha o estira el contenido de forma "vertical" para que alcance desde el top al bottom */
+}
+section {
+  /*   border: 1px solid black;
+ */
+  width: 370px;
+  height: 480px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 1; /* Hace que el contenido crezca horizontalmente para cubrir la totalidad de su padre de left a right  */
+  /*   align-items: start;
+ */
+  align-items: center;
+  justify-content: start;
+  padding: 2rem;
+}
+section > img {
+  /*   border: 1px solid black;
+ */
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  order: 0;
+}
+section > button {
+  /* align-self: self-end;*/
+  /* align-self: end; */
+
+  /* ESTA SOLUCION DEJA EL BOTON EXACTO EN ESE PUNTO */
+  /* position: absolute; */
+  /* margin-top: 400px; */
+
+  width: 120px;
+  height: 18px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  order: 3;
+}
+section > h2 {
+  /* border: 1px solid black; */
+  width: 100%;
+  font-size: 1rem;
+  padding: 1rem 0;
+  order: 1;
+}
+section > p {
+  /*   border: 1px solid black;
+ */
+  width: 100%;
+  font-size: 0.8rem;
+  order: 2;
+  text-align: center;
+  padding-bottom: 1rem;
+  margin-bottom: auto; /* Ver que hace margin-bottom */
+}
+.uno {
+  background-color: rgb(228, 199, 255);
+}
+.dos {
+  background-color: rgb(177, 255, 189);
+}
+.tres {
+  background-color: darkcyan;
+}
+
+@media screen and (min-width: 740px) {
+  .uno {
+    order: 1;
+  }
+  .dos {
+    order: 0;
+  }
+  .tres {
+    order: 2;
+  }
+}
+@media screen and (min-width: 1110px) {
+  .uno {
+    order: 2;
+  }
+  .dos {
+    order: 1;
+  }
+  .tres {
+    order: 0;
+  }
+}

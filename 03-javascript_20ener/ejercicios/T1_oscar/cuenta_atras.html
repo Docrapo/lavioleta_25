@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuenta atras con for, while y do while</title>
+  </head>
+
+  <body>
+    <!-- Realiza un programa que pida un número por prompt y escriba en la consola toda la cuenta hasta 0, con los Bucles For, con while y con  Do While -->
+    <script>
+      let final_countdown,
+        error = "";
+      do {
+        final_countdown = Number(
+          prompt(
+            `${error}. Introduce un número mayor que 0 para calcular su cuenta atrás`
+          )
+        );
+        error = " ERRORUM ";
+      } while (!Number(final_countdown >= 0) || final_countdown == "");
+      let i = final_countdown;
+      for (i; i > 0; i--) {
+        console.log(`iteración ${i}`);
+      }
+      console.log(`Valor final: ${i}`);
+
+      let x = final_countdown;
+      while (x > 0) {
+        console.log(`iteración ${x}`);
+        x--;
+      }
+      console.log(`Valor final: ${x}`);
+      let z = final_countdown;
+      do {
+        console.log(`iteración ${z}`);
+        z--;
+      } while (z > 0);
+      console.log(`Valor final: ${z}`);
+    </script>
+  </body>
+</html>

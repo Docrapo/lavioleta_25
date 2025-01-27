@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcular el factorial de un número</title>
+    <!-- <script src="js/factorial.js"></script> -->
+    <script>
+      let num,
+        error = "";
+
+      do {
+        num = prompt(error + "Introduce un número para mostrar su factorial");
+        num = num.replace(/\s/g, "");
+        error = "ERRORUM. ";
+      } while (!Number(num >= 0) || num == "");
+      alert(num);
+      console.log("Bucle for de 1 al número");
+      let result = 1;
+      for (let i = 1; i <= num; i++) {
+        console.log((result = result * i));
+      }
+      console.log("Bucle for del número a 1");
+      let r = num;
+      for (let i = num - 1; i > 1; i--) {
+        console.log((r = r * i));
+      }
+      console.log("Bucle while de número a 1");
+      let r2 = num;
+      let j = num - 1;
+      while (j > 1) {
+        console.log((r2 = r2 * j));
+        j--;
+      }
+    </script>
+  </head>
+
+  <body></body>
+</html>

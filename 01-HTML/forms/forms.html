@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Formularios en HTML5</title>
+  </head>
+  <body>
+    <h1>Formularios en HTML5</h1>
+    <h3>Contacta con nosotros</h3>
+    <!-- nombreservidor.set/directorio/archivogestor.php -->
+    <form
+      action="https://formsubmit.co/docrapo@gmail.com"
+      method="post"
+      autocomplete
+    >
+      <fieldset>
+        <legend>Datos personales</legend>
+        <div>
+          <label for="nombre_apellidos">Nombre</label>
+          <input
+            id="nombre_apellidos"
+            name="nombre_db"
+            type="text"
+            placeholder="Nombre Apellido1 Apellido2"
+            autofocus
+            required
+            pattern="^[A-ZÀ]{1}[a-zA-ZÀ-ÿ\u00f1\u00d1\s]{2,40}$"
+          />
+        </div>
+        <div>
+          <label for="telefono_id">Teléfono</label>
+          <input
+            type="texto"
+            name="tel_db"
+            id="telefono_id"
+            pattern="\d{9,11}"
+          />
+        </div>
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input
+            type="email"
+            name="email_db"
+            id="email"
+            pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,9}"
+          />
+        </div>
+        <div>
+          <label for="edad">Fecha de nacimiento</label>
+          <input type="date" name="nacimiento_db" id="edad" />
+        </div>
+        <div>
+          <p>Indica tu sexo</p>
+          <label for="sexo">Mujer</label>
+          <input type="radio" name="sexo_db" id="sexo" value="mujer" checked />
+          <label for="sexo">Hombre</label>
+          <input type="radio" name="sexo_db" id="sexo" value="hombre" />
+          <label for="sexo">No Binario</label>
+          <input type="radio" name="sexo_db" id="sexo" value="No binario" />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Datos profesionales y preferencias</legend>
+        <div>
+          <label for="idioma">Idioma materno</label>
+          <!-- puede ser multiple y queda como una ventana de seleccion -->
+          <select name="idioma_db" id="idioma" required>
+            <option value="" selected>Elige una opcion</option>
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+            <option value="de">Aleman</option>
+            <option value="gall">Gallego</option>
+          </select>
+        </div>
+        <div>
+          <label for="lenguajes"
+            >Selecciona los lenguajes de programación que conozcas</label
+          >
+          <br />
+          <!-- puede ser multiple y queda como una ventana de seleccion -->
+          <select name="lenguajes_db" id="lenguajes" required multiple>
+            <option value="javascript">Javascript</option>
+            <option value="php">PHP</option>
+            <option value="java">Java</option>
+            <option value="c++">C++</option>
+          </select>
+        </div>
+
+        <div>
+          <p>Aficiones</p>
+          <label for="deportes">Deportes</label>
+          <input
+            type="checkbox"
+            name="aficiones_db"
+            id="deportes"
+            value="deportes"
+          />
+          <label for="salud">Salud</label>
+          <input type="checkbox" name="aficiones_db" id="salud" value="salud" />
+          <label for="finanzas">Finanzas</label>
+          <input
+            type="checkbox"
+            name="aficiones_db"
+            id="finanzas"
+            value="finanzas"
+          />
+          <label for="politica">Política</label>
+          <input
+            type="checkbox"
+            name="aficiones_db"
+            id="politica"
+            value="politica"
+          />
+        </div>
+        <div>
+          <label for="cv">Sube tu Curriculum Vitae</label>
+          <input type="file" name="cv_db" id="cv" accept=".doc,.pdf,.jpg" />
+        </div>
+        <div>
+          <label for="comentario">Comentario</label><br />
+          <textarea name="comentario_db" id="comentario"></textarea>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Resumen de envío</legend>
+        <input type="reset" value="Restablecer" />
+        <!-- <button type="reset">Restablecer</button> (tambien se puede usar, pero es más correcto con INPUT)-->
+        <input type="submit" value="Enviar" />
+        <!-- <button type="submit">Enviar</button> -->
+      </fieldset>
+    </form>
+    <br />
+    <a href="../index.html">Volver al Index</a>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+}
+button {
+  display: inline-block;
+  padding: 5px;
+  margin: 25px 0;
+  color: black;
+  font-weight: 600;
+  border: 1px solid rgb(47, 84, 72);
+  border-radius: 10px;
+  box-shadow: 2px 2px;
+  background-color: rgb(205, 233, 224);
+}
+button:hover {
+  color: rgb(205, 233, 224);
+  box-shadow: 0 0 0;
+  background-color: rgb(47, 84, 72);
+}
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 60px;
+  padding: 0 30px;
+  border: 1px solid black;
+  text-align: center;
+}
+ul {
+  padding: 0;
+}
+li:hover::before {
+  content: "➧";
+}
+li:hover::after {
+  padding-left: 30px;
+}
+li.uno:hover::after {
+  content: "➧ Pide un número por prompt y entrega el factorial realizado por un while";
+}
+li.dos:hover::after {
+  content: "➧ Pide por medio de un pompt la nota de un alumno y muestra si está Suspens, Aprovat, Bé, Notable o Excel·lent";
+}
+li.tres:hover::after {
+  content: "➧ Solicita 2 notas y devuelve la mediana de ambas";
+}
+li.cuatro:hover::after {
+  content: "➧ Compara entre 2 números cual es el mayor";
+}
+li.cinco:hover::after {
+  content: "➧ En catalán: Devuelve que número de la semana es el día ingresado";
+}
+li.seis:hover::after {
+  content: "➧ Pide un número hasta ingresar uno mayor o igual a 50 y devuelve en cuantos intentos.";
+}
+p.diaSetmana::first-letter {
+  text-transform: uppercase;
+}
+.nota_suspens {
+  color: red;
+}
+.nota_excellent {
+  color: green;
+}

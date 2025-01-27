@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setInterval y setTimeout</title>
+  </head>
+  <body>
+    <script>
+      /* setInterval(function () {
+        alert("Hello");
+      }, 5000);  */ // cada 1000 milisegundos (funciona en milisegundos)
+      // muestra una alerta cada 5 segundos osea 5000 milisegundos
+
+      setTimeout(() => {
+        // esto es un Arrow fuction, vector, puede en algunos o la mayoria de los casos sustituir una function
+        alert("Hello");
+      }, 5000);
+
+      /* setInterval y setTimeout son funciones que se ejecutan y se limpian, es decir se vacian, esto es el inicio de lo que son las promesas */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+:root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; /* IMPORTANTE: Hace que mis tamaños dependan del width que le de a la caja (elemento), sin contar el tamaño de bordes, margenes o paddings */
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  width: 80%;
+  margin: auto;
+}
+div .container {
+  width: 100%;
+}
+h4 {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0;
+}
+.masonry {
+  column-count: 1;
+}
+.inner {
+  display: inline-block;
+  padding: 0.7rem 0.2rem;
+}
+p {
+  padding: 1rem;
+  border: 1px solid rgb(188, 188, 188);
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  font-weight: 100;
+}
+@media screen and (min-width: 768px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .masonry {
+    column-count: 3;
+  }
+}

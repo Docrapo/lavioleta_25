@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metodos Array HTML</title>
+  </head>
+  <body>
+    <script>
+      let hombres = ["Pablo", "Jose"];
+      let hombres2 = hombres.slice(); // GUARDAR EL ORIGINAL DEL ARRAY
+      let mujeres = ["Lucia", "Gemma", "Zelda"];
+      console.log(hombres);
+      console.log(mujeres);
+
+      let humanos = hombres.concat(mujeres);
+      console.log(humanos);
+      let humanas = mujeres.concat(hombres);
+      console.log(humanas);
+      console.log(hombres.lastIndexOf("Jose"));
+      console.log(humanas.lastIndexOf("Jose"));
+      humanos.push("William");
+      console.log(humanos);
+      hombres.push("William");
+      console.log(hombres);
+      console.log(humanos);
+      humanos = hombres.concat(mujeres);
+      console.log(humanos);
+      console.log(humanos.pop());
+      console.log(humanos.shift());
+      console.log(hombres);
+      console.log(humanos);
+      console.log(mujeres);
+      console.log(hombres2);
+    </script>
+  </body>
+</html>

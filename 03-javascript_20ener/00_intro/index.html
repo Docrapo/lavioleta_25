@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integración de Javascript en HTML</title>
+
+    <!-- <script>
+      alert(
+        'PopUP escrito desde un alert con Texto "entrecomillado" en el head de mi html'
+      );
+      console.log(
+        "Primer texto escrito en la consola de javascript, no visible en el html"
+      );
+    </script> -->
+  </head>
+  <body>
+    <h1>Inserción de Javascript dentro de elementos HMTL</h1>
+    <p>
+      <a href="javascript:nombre();">Abre un prompt para mostrar tu nombre</a>
+    </p>
+    <button id="btn">Muestra tu nombre</button>
+    <div id="mostrar"></div>
+    <div id="mostrar2"></div>
+    <div id="mostrar3"></div>
+    <div id="mostrar4"></div>
+    <script>
+      /* NO INCLUIR LA ETIQUETA <script> en el comentario, NUNCA */
+      /*    alert(
+        'PopUP escrito desde un alert con Texto "entrecomillado" en el body de mi html'
+      );
+      console.log(
+        "Segundo texto escrito en la consola de javascript, no visible en el body"
+      ); */
+    </script>
+    <script src="js/code.js"></script>
+  </body>
+</html>

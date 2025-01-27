@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uso Framework W3School CSS</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="../bootstrap/css/style.css" />
+  </head>
+  <body>
+    <nav class="w3-bar w3-black">
+      <a href="#" class="w3-bar-item w3-button">Home</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 1</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 2</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 3</a>
+      <a
+        href="javascript:void(0)"
+        class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+        onclick="collapsetry()"
+        >&#9776;</a
+      >
+    </nav>
+
+    <nav
+      id="demo"
+      class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium"
+    >
+      <a href="#" class="w3-bar-item w3-button">Link 1</a>
+      <a href="#" class="w3-bar-item w3-button">Link 2</a>
+      <a href="#" class="w3-bar-item w3-button">Link 3</a>
+    </nav>
+
+    <header class="w3-container w3-padding-48 marg-left-4">
+      <h1>Primeros pasos con W3CSS</h1>
+    </header>
+    <main class="mw">
+      <form class="w3-container marg-left-4 marg-right-4">
+        <label class="w3-text-blue"><b>E-mail</b></label>
+        <input class="w3-input w3-border marg-bottom-4" type="text" />
+
+        <button class="w3-btn w3-blue">Register</button>
+        <button class="w3-btn w3-red">Deny</button>
+      </form>
+    </main>
+    <script src="source/js/w3js.js"></script>
+    <script>
+      function collapsetry() {
+        var x = document.getElementById("demo");
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else {
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+    </script>
+  </body>
+</html>

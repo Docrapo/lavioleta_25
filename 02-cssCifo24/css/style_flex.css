@@ -1,0 +1,191 @@
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 
+
+.montserrat-<uniquifier > {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+*/
+
+/* Aqui va el font-family y su aspecto seteado por defecto (default), definiendo el elemento raiz*/
+:root {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px; /* Siempre el rem se tomará de aqui */
+  line-height: 1.5rem;
+}
+*,
+*::before,
+*::after,
+html {
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  padding: 1.5rem; /* 1.5 x 14px (medida asignada en root) */
+}
+header,
+main,
+footer {
+  margin-bottom: 2rem;
+}
+h1 {
+  line-height: 4rem;
+  font-size: 2.98rem;
+  font-weight: 800;
+  text-align: center;
+}
+img {
+  max-width: 100%;
+}
+h3 {
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  font-weight: 700;
+}
+P {
+  margin: 1.5rem;
+}
+
+.cambioCaja {
+  text-transform: lowercase;
+}
+.cambioCaja span {
+  text-transform: uppercase;
+}
+.contenedor {
+  display: flex; /* por defecto los pone en linea y no permite salto de linea */
+  background-color: rgb(250, 179, 152);
+  /* flex-direction: row;
+  flex-wrap: wrap; /* si se parte o no la linea es decir que permita saltos de linea */
+  /*flex-flow: row wrap;  Combina flex-direction y flex-wrap */
+  /* flex-flow: column nowrap;
+  height: 600px; */
+}
+.elemento {
+  width: 200px;
+  height: 100px;
+  margin: 0.5rem;
+  background-color: rgb(255, 136, 84);
+}
+
+.contenedor2 {
+  background-color: rgb(173, 224, 255);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.element {
+  width: 150px;
+  height: 100px;
+  margin: 0.8rem;
+  background-color: rgb(135, 247, 209);
+}
+.contenedor3 {
+  background-color: rgb(228, 174, 255);
+  /* height: 200px; */
+  display: flex;
+  flex-flow: row wrap;
+  /* align-items: flex-start; alineacion vertical por default ... arriba */
+  /* align-items: center; al centro */
+  /* align-items: baseline; se alinean a la base de los textos */
+  /*  align-items: stretch; Si no hay altura expande los hijos hasta la altura del padre */
+  align-items: flex-end; /* se alinea abajo */
+  overflow: hidden;
+}
+.elemen {
+  text-align: center;
+  width: 120px;
+  height: 120px;
+  margin: 0.6rem;
+  background-color: rgb(181, 127, 232);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 4.2rem;
+}
+.uno {
+  line-height: 5rem;
+  font-size: 3rem;
+}
+.dos {
+  padding-top: 1.5rem;
+  line-height: 3rem;
+  font-size: 3.5rem;
+}
+.contenedor4 {
+  background-color: rgb(69, 69, 216);
+  height: 600px; /* sin altura, se adapta automaticamente, pero hay que considerar que no siempre se puede tner ese margen de juego o libertad */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; /* centrar elementos del padre */
+  align-items: flex-start;
+  align-content: center;
+}
+.eleme {
+  text-align: center; /* centrar texto de un contenedor */
+  background-color: rgb(97, 97, 237);
+  width: 140px;
+  /* height: 120px */
+  margin: 0.6rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 4rem;
+}
+.flex-container {
+  background-color: rgb(255, 196, 215);
+  display: flex;
+  /* flex-flow: row nowrap; */
+}
+
+.flex-container > div {
+  background-color: rgb(192, 10, 110);
+  color: white;
+  width: 100px;
+  margin: 0.5rem;
+  text-align: center;
+  line-height: 5rem;
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+div.orden {
+  background-color: rgb(119, 10, 192);
+  order: 1; /* Intentar evitar cambiar el orden de lectura porque no es aconsejable por accesibilidad, los buscadores y herramientas para accesibilidad no leen CSS */
+}
+div.orden2 {
+  background-color: rgb(192, 10, 46);
+  order: 2;
+}
+div.grow {
+  flex-grow: 10; /* Por defecto es 0 */
+  background-color: bisque;
+  color: rgb(64, 58, 58);
+}
+div.grow2 {
+  flex-grow: 2; /*de haber dos o más hijos (elementos) que tengan flex-grow, el espacio que sobra al descontar los elementos que NO tienen flwx-grow, se divide proporcionalmente y se le asigna un espacio segun el valor que le dé a flex-grow*/
+  background-color: rgb(234, 255, 196);
+  color: rgb(64, 58, 58);
+}
+div.shrink {
+  flex-shrink: 1; /* Por defecto es 1 */
+  background-color: rgb(255, 170, 0);
+}
+div.shrink2 {
+  flex-shrink: 8; /* Por defecto es 1 */
+  background-color: rgb(255, 98, 0);
+}
+div.basis {
+  flex-basis: 350px; /*Anchura de base para el elemento hijo, es practicamente un width con flex*/
+}
+div.paraladiv2 {
+  flex: 0 3 200px;
+  background-color: blueviolet;
+}
+div.paraladiv3 {
+  background-color: rgb(217, 43, 226);
+  flex: 3 0 200px;
+}

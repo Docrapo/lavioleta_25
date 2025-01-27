@@ -1,0 +1,104 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; /* IMPORTANTE: Hace que mis tamaños dependan del width que le de a la caja (elemento), sin contar el tamaño de bordes, margenes o paddings */
+}
+/* article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+} */
+
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  /* left: 0px; No es tan necesario*/
+  background-color: chocolate;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+.showmenu {
+  font-weight: 900;
+  font-size: 3rem;
+  color: rgb(104, 50, 12);
+  display: none; /* Como trabajamos primero para escritorio, lo ocultamos, por tanto el contenido restante se ha vuelto a centrar */
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+}
+/* li a {} | #menu li a{}  esto es lo mismo que la ruta que sigue, pero la que se ha dejado es más específica por tanto mejor*/
+nav ul#menu li a {
+  display: block;
+  text-decoration: none;
+  color: rgb(46, 46, 46);
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent; /* Hay que declararlo aquí porque como el borde tiene un tamaño al hacer hover aumentará el tamaño de la barra, por tanto aqui lo declaro como transparente, así me aseguro que el tamaño de la barra tendrá el tamaño + el borde desde el inicio */
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 2rem; /* se mantiene tanto en menu visible como en desplegable */
+  padding: 0 1.3rem;
+  transition: all 0.6s ease;
+}
+nav ul#menu li a:hover {
+  color: antiquewhite;
+  border-bottom: 2px solid rgb(222, 135, 209);
+  border-top: 2px solid rgb(222, 135, 209);
+}
+nav ul#menu li a.selected {
+  color: rgb(222, 135, 209);
+  border-left: 2px solid rgb(222, 135, 209);
+  border-right: 2px solid rgb(222, 135, 209);
+  padding: 0 1.175rem;
+}
+input[type="checkbox"]#showmenu_id {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .showmenu {
+    display: inline;
+    cursor: pointer;
+  }
+  ul {
+    display: none;
+    opacity: 0;
+  }
+  nav {
+    justify-content: flex-start;
+  }
+  /* el checked es una pseudoclase */
+  /* ~ que a ul le pase.... */
+  input[type="checkbox"]:checked ~ ul {
+    margin-top: 1.3rem;
+    margin-left: 1rem;
+    display: block;
+    opacity: 1;
+    animation: opacidad 2s ease;
+  }
+}
+@keyframes opacidad {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

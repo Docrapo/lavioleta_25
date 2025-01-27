@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style_menu_collaps.css" />
+    <title>Violeta 24 | Menú Colapsable con CSS y sin JS</title>
+  </head>
+  <body>
+    <!-- header que contiene un label que su texto va a ser una entidad (entities) de HTML -->
+    <header>
+      <nav>
+        <label class="showmenu" for="showmenu_id">&equiv;</label>
+        <input id="showmenu_id" type="checkbox" />
+        <ul id="menu">
+          <!-- # para indicar que es interactivo -->
+          <li><a href="#">HOME</a></li>
+          <li><a class="selected" href="#">PRODUCTOS</a></li>
+          <li><a href="#">NOSOTROS</a></li>
+          <li><a href="#">SERVICIOS</a></li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+:root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; /* IMPORTANTE: Hace que mis tamaños dependan del width que le de a la caja (elemento), sin contar el tamaño de bordes, margenes o paddings */
+}
+/* article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+
+} */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  /*   flex-flow: column nowrap;
+ */
+}
+header {
+  /* atributo como hijo de body*/
+  flex-grow: 1;
+  /* fin atributo como hijo */
+  background-color: rgb(255, 214, 124);
+  padding: 2rem;
+}
+div#main {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  /* atributo como hijo de body*/
+  flex-grow: 3;
+  /* fin atributo como hijo */
+}
+div > nav {
+  background-color: rgb(206, 206, 108);
+  padding: 2rem;
+  /* atributos como hijo de div#main */
+  flex-grow: 1;
+  /* fin atributos como hijo*/
+}
+div > aside {
+  background-color: rgb(206, 206, 108);
+  padding: 2rem;
+  /* atributos como hijo de div#main */
+  flex-grow: 1;
+  /* fin atributos como hijo*/
+}
+div > article {
+  /* atributos como padre */
+  display: flex;
+  flex-flow: column nowrap;
+  /* fin atributos como padre */
+  /* atributos como hijo de div#main */
+  flex-grow: 3;
+  /* fin atributo como hijo */
+  padding: 3rem;
+}
+div#verde {
+  background-color: rgb(189, 239, 115);
+  padding: 1rem;
+  /* atributo como hijo article */
+  flex-grow: 20;
+  /* fin atributo como hijo */
+}
+div#azul {
+  background-color: skyblue;
+  padding: 1rem;
+  /* atributo como hijo de article */
+  flex-grow: 0;
+  /* fin atributo como hijo */
+}
+footer {
+  background-color: rgb(255, 214, 124);
+  padding: 2rem;
+  /* atributo como hijo de body */
+  flex-grow: 1;
+  /* fin atributo como hijo */
+}
+@media screen and (max-width: 850px) {
+  div#main {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}

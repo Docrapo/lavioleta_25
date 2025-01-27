@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estructura control Switch</title>
+  </head>
+  <body>
+    <div id="mostra"></div>
+    <script>
+      let num_1 = Number(prompt("ingresa numero; "));
+      let result;
+      switch (num_1) {
+        case 10: //siempre dos  puntos
+          result = `${num_1} vale 10`;
+          alert(result);
+          break; // voluntario PERO RECOMENDABLE para ahorro de memoria.
+        case 20:
+          result = `${num_1} vale 20`;
+          break;
+        case 30:
+          result = `${num_1} vale 30`;
+          break;
+        default:
+          result = `${num_1} no vale 10,20 ni 30`;
+      }
+      /* alert(result); */
+      document.querySelector("#mostra").innerHTML = result;
+    </script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

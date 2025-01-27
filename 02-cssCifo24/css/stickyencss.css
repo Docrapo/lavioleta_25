@@ -1,0 +1,28 @@
+/* Solo podemos tenerlo en la raiz de HTML. no podemos ponerlo dentro de otro elemento
+
+Es una combinacion de posicionamiento relativo y fijo, para este posicionamiento las propiedades top left bottom y right no mueven el elemento, sirven como un punto de referencia, y mientras no lleguen a ese valor el elemento se comportará como relative, en cuanto llegue al valor se convertirá en fixed.
+
+Para que este comportamiento funcione el elemento sticky debe ser hijo directo del body o su elemento contenedor debe tener dimensiones definidas y solo será stricky dentro de las dimensiones de su contenedor padre.*/
+
+#cabecera {
+  width: 100%;
+  height: 500px;
+  background-color: transparent;
+  border: 2px solid;
+}
+/* Hay que decirle cuando parará, con una dimensión en el espacio (top, left, bottom o right) */
+.sticky {
+  background-color: aquamarine;
+  position: sticky;
+  top: 100px;
+  z-index: 1;
+}
+.sticky-parent {
+  border: 2px solid black;
+  height: 800px;
+}
+.sticky-child {
+  position: sticky;
+  top: 80px;
+  background-color: yellowgreen;
+}

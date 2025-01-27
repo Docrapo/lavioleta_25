@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estructura if... else if... else</title>
+  </head>
+  <body>
+    <script src="js/scripts.js"></script>
+    <script>
+      /* function salir() {
+        location.replace("https://www.w3schools.com");
+      } LA HE CAMBIADO Y GUARDADO en una libreria de funciones scripts.js*/
+      let num1 = 10;
+      let num2 = prompt("Indica un número: ");
+      console.log(typeof num2);
+      num2 = Number(num2); // Lo PARSEA en número.
+      let result = num1 + num2;
+      if (result > 20) {
+        alert(
+          result +
+            " Es el resultado de sumar " +
+            num1 +
+            " y " +
+            num2 +
+            " y es mayor que 20."
+        );
+        alert(
+          `${result} es el resultado de sumar ${num1} y ${num2} y es mayor que 20.`
+        ); // UNA FORMA más moderna y eficaz de hacer lo anterior
+      } else if (result == 20) {
+        alert(
+          `${result} es el resultado de sumar ${num1} y ${num2} y es probadamente igual a 20.`
+        );
+      } else if (result < 20) {
+        alert(
+          `${result} es el resultado de sumar ${num1} y ${num2} y es menor que 20.`
+        );
+      } else {
+        alert(`Ingresa un NÚMERO VÁLIDO!!!!`);
+      }
+      let salirOno = confirm("Quieres volver a cargar el juego?");
+      if (salirOno) {
+        // sin valor CONFIRM será true cuando presione aceptar
+        location.reload(); // location, llama a la barra de direcciones, y reload a la recarga dentro de la barra y su valor es true
+      } else {
+        salir();
+      }
+    </script>
+  </body>
+</html>

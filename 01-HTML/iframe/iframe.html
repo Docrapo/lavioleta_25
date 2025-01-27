@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>iFrames en HTML</title>
+  </head>
+  <body>
+    <h1>iFrames en HTML</h1>
+    <h3>iframe con menú de navegación</h3>
+    <p>
+      <a href="../audio_video/audio_video.html" target="marco">Ir a Audio </a>
+      || <a href="../hola.html" target="marco">Ir a Hola</a> ||
+      <a href="https://docs.emmet.io/cheat-sheet" target="marco">Emmet help</a>
+    </p>
+    <iframe src="../hola.html" frameborder="1" name="marco"></iframe>
+    <!-- DARLE UN FONDO RECORDAR || Se le dió un bordo en vez de fondo (en CSS)-->
+    <h3>iframe desde Google maps</h3>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.038142830715!2d2.1314790769206367!3d41.416690671296045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4981b5fdca4b1%3A0x35e8d1d280af19bd!2sCentre%20d&#39;Innovaci%C3%B3%20i%20Formaci%C3%B3%20Ocupacional%20(CIFO)%20de%20Barcelona%20La%20Violeta!5e0!3m2!1ses!2ses!4v1733928981402!5m2!1ses!2ses"
+      allowfullscreen=""
+    ></iframe>
+    <h3>iframe desde Youtube</h3>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/a4na2opArGY?si=ivxnFeRPCdt8XUvG"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+    <!-- para frameborder al parecer gana el estilo CSS de border-->
+    <p><a href="../index.html">Volver al Index</a></p>
+  </body>
+</html>

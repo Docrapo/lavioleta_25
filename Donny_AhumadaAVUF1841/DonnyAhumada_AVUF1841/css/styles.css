@@ -1,0 +1,486 @@
+/* #region MARK: SETUP
+declaraciones de inicio y root */
+@font-face {
+  font-family: "amaranthbold";
+  src: url("../fonts/amaranth-bold-webfont.woff") format("woff"),
+    url("../fonts/amaranth-bold-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "arima";
+  src: url("../fonts/Arima-Light.woff") format("woff"),
+    url("../fonts/Arima-Light.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "arima";
+  src: url("../fonts/Arima_semiBold.woff") format("woff"),
+    url("../fonts/Arima_semiBold.ttf") format("ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+:root {
+  font-family: "arima";
+  font-size: 14px;
+  --verdemenu: #58ff9d;
+  --widthprincipal: 80%;
+}
+/* #endregion */
+
+/* #region MARK:RESET 
+Inicio Reset */
+*,
+*::before,
+*::after {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; /* IMPORTANTE: Hace que mis tamaños dependan del width que le de a la caja (elemento), sin contar el tamaño de bordes o paddings */
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+/* #endregion */
+/* #region MARK: MAQUE
+INICIO maquetación (distribución) de cajas para imágenes de fondo y contenedor de contenidos */
+
+.background_top {
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  background: url(../imgs/destinos_exoticos.jpg) no-repeat bottom;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  margin-top: -150px;
+  z-index: -1;
+}
+.background_bottom {
+  width: 100%;
+  height: 300px; /* ver margin-bottom de div.contenedor */
+  margin-top: -120px;
+  position: absolute;
+  background: url(../imgs/escocia.jpg) no-repeat bottom;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgb(255, 255, 255) 40%,
+    transparent 100%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to top,
+    rgb(255, 255, 255) 55%,
+    transparent 100%,
+    transparent 100%
+  );
+  z-index: -1;
+}
+/* #endregion FIN maquetación (distribución) cajas imágenes de fondo y contenedor de contenidos */
+/* #region MARK:C:main
+INICIO maquetación de contenido */
+/* header {
+  padding-bottom: 10rem;
+} */
+main {
+  width: var(--widthprincipal);
+  margin: auto;
+  margin-top: 150px;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px 10px 0 0;
+  padding: 3rem;
+  z-index: 2;
+}
+/* #endregion PAUSA maquetación contenido */
+
+/* #region MARK: C:nav
+INICIO NAVEGADOR */
+nav {
+  width: 100%;
+  top: 0px;
+  position: fixed; /* fijar la posicion del nav arriba ya que por default es top:0 left:0 */
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: flex-start;
+}
+.vermenu {
+  display: inline;
+  cursor: pointer;
+  margin-top: -25px; /* quitar margen para que se salga del body arriba ya que al tener tan grande la font la caja de texto es muy alta */
+  margin-bottom: -20px; /* quitar margen abajo para que la barra del nav no crezca tanto por lo alto de la caja de texto */
+  margin-left: 10px;
+  font-weight: 100;
+  font-size: 4.4rem;
+  color: rgb(255, 255, 255);
+}
+ul.menu {
+  display: none;
+  list-style-type: none;
+  text-align: center;
+  opacity: 0; /* Recordar ANIMAR */
+}
+ul.menu li {
+  width: 150px; /* Necesario para que al cambio de fuente light a bold no se note el cambio de tamaño en caja */
+}
+ul.menu li a {
+  display: block;
+  text-decoration: none;
+  font-size: 1rem;
+  color: rgb(207, 207, 207);
+  position: relative;
+  padding: 0.5rem 2rem;
+}
+ul.menu li a::before {
+  content: "";
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  transition: 0.5s transform ease;
+  transform: scale3d(0, 1, 1);
+  transform-origin: 0% 50%;
+}
+ul.menu li a.seleccionado::before {
+  transform: scale3d(1, 1, 1);
+}
+ul.menu li a:hover::before {
+  transform: scale3d(1, 1, 1);
+}
+ul.menu_fx li a::before {
+  background: var(--verdemenu);
+  transform-origin: 50% 50%;
+}
+ul.menu_fx li a.seleccionado::before {
+  background: white;
+}
+ul.menu li a:hover {
+  font-weight: 600;
+  color: var(--verdemenu);
+}
+ul.menu li a.seleccionado {
+  font-weight: 600;
+  color: white;
+}
+input#vermenu_id {
+  display: none;
+}
+input#vermenu_id:checked ~ ul.menu {
+  margin-left: 1rem;
+  margin-top: 5px;
+  margin-bottom: 0.5rem;
+  display: block;
+  opacity: 1;
+}
+/* #endregion FIN NAVEGADOR */
+
+/* #region MARK: CONTE
+CONTINUACIÓN maquetación contenido */
+section /* hijo main */ {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+article /* hijo de section (general) */ {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-bottom: 2rem;
+}
+article.medias {
+  align-items: center; /* AGREGADO en Servicios */
+}
+.section_cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+.section_cards.principal {
+  padding: 5rem 0;
+}
+.section_cards.productos {
+  padding-bottom: 4rem;
+}
+.section_cards.oficinas {
+  padding: 0;
+}
+.card {
+  align-self: center;
+  width: 230px;
+  /* border: 1px solid rgb(0, 0, 0); GUIA lo tenía para guiarme en la maquetación */
+  padding: 0.8rem;
+}
+.card img {
+  width: 100%;
+  height: 115px;
+  object-fit: cover;
+}
+aside {
+  width: var(--widthprincipal);
+  margin: auto;
+  height: 400px;
+  margin-bottom: 2rem;
+  background-color: #dddddd;
+  border-radius: 0 0 10px 10px;
+} /* #region MARK: C:form 
+incio formulario */
+form {
+  padding: 2rem 3.6rem;
+}
+fieldset {
+  border: none; /* NECESARIO Porque por defecto tiene bordes */
+}
+fieldset.botones_envio {
+  text-align: right;
+  padding: 0.5rem 0;
+}
+input,
+textarea {
+  display: block;
+  border: 0px;
+  width: 100%;
+  font-size: 0.8rem;
+  color: gray;
+  padding-left: 0.5rem;
+  margin-bottom: 1.4rem;
+  margin-top: 0.2rem;
+}
+input {
+  height: 27px;
+}
+input.reset,
+input.submit {
+  display: inline-block;
+  width: 58px;
+  color: white;
+  font-size: 0.7rem;
+  background-color: rgb(52, 52, 52);
+  filter: drop-shadow(0.2rem 0.2rem black);
+  margin: 0 0 0 1.6rem;
+  padding: 0;
+}
+.reset:hover {
+  cursor: pointer;
+  transform: translate(0.2rem, 0.2rem);
+  filter: drop-shadow(0 0 rgba(0, 0, 0, 0));
+  background-color: #ec9a1d;
+}
+.submit:hover {
+  cursor: pointer;
+  transform: translate(0.2rem, 0.2rem);
+  filter: drop-shadow(0 0 rgba(0, 0, 0, 0));
+  background-color: #e91e63;
+}
+textarea {
+  height: 90px;
+  padding-top: 0.5rem;
+  /* Revisar como hacer que todo crezca al hacer crecer este textarea */
+  resize: none;
+} /* #endregion */
+
+/* #region MARK: C:foot 
+Inicio Footer redes */
+.section_footer /* hijo de section (general) */ {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.section_footer > a {
+  display: block;
+}
+.section_footer > a > img {
+  display: block;
+  width: 40px;
+}
+.section_footer a:hover {
+  filter: invert(90%) sepia(56%) saturate(659%) hue-rotate(62deg)
+    brightness(113%) contrast(101%);
+}
+/* #endregion footer redes */
+
+/* #region MARK: FOOTER
+footer Principal */
+.footer_main {
+  width: 100%;
+  height: 130px;
+  margin-top: 170px;
+  display: inline-block;
+  text-align: center;
+  background-color: rgb(34, 34, 34);
+}
+/* #endregion FIN FOOTER Principal */
+/* #endregion FIN maquetación contenido */
+
+/* #region MARK:TEXT
+INICIO Apariencia de texto y caja de texto */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "amaranthbold";
+  padding-bottom: 1rem;
+}
+h2 {
+  text-transform: uppercase;
+  padding-top: 2rem;
+}
+.section_principal p {
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  padding-bottom: 1.2rem;
+}
+.section_secondary article p {
+  font-size: 0.85rem;
+  padding-bottom: 1rem;
+}
+.card p {
+  font-size: 0.75rem;
+}
+form p {
+  font-size: 0.7rem;
+}
+label {
+  font-size: 0.9rem;
+}
+::placeholder {
+  color: #b5b5b5;
+}
+.footer_main p {
+  width: 100%;
+  padding: 2rem 2rem 1rem 2rem;
+  text-align: center;
+  color: white;
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+.footer_main a {
+  font-size: 3rem;
+  color: white;
+  line-height: 0.1rem;
+}
+.footer_main a:hover {
+  color: var(--verdemenu);
+  /* color: #e91e63; */
+} /* #endregion */
+
+/* #region MARK: MEDIA 
+Media breakpoints*/
+
+/* #endregion */
+/* #region MARK: M:768 
+Media 768px */
+@media screen and (min-width: 768px) {
+  /* INCIO NAVEGADOR */
+  nav {
+    justify-content: center;
+  }
+  .vermenu {
+    display: none;
+  }
+  ul.menu {
+    display: flex;
+    opacity: 1;
+  }
+  ul.menu li {
+    display: inline-block; /* Para que al reducir el tamañano del navegador el menu no quede abierto en forma de listado sino vuelva a su forma horizontal... averiguar como "uncheck" el input tipo checkbox */
+    margin: 0.57rem 0.2rem;
+  }
+  /* FIN NAVEGADOR */
+  form {
+    padding: 2rem 3rem;
+  }
+  /* INICIO AJUSTES de tamaños en Cards, en moviles se ve más grande a la misma proporción 2:1 y este ajuste es para escritorio */
+  .card {
+    width: 200px;
+  }
+  .card img {
+    height: 100px;
+  }
+  .section_cards.productos > .card {
+    width: 250px;
+  }
+  .section_cards.productos > .card img {
+    height: 125px;
+  }
+}
+/* #endregion */
+/* #region MARK: M:1440 
+   Media 1440px fue agregado en clases ya que a pantalla extedida quedaban las imágenes muy pequeñas*/
+@media screen and (min-width: 1440px) {
+  :root {
+    --widthprincipal: 1080px; /* Para que en pantallas con resoluciones mayores la página no crezca más y se desborde*/
+  }
+  .section_cards.productos > .card {
+    /* Específicamente para web de productos */
+    width: 340px;
+  }
+  .section_cards.productos > .card img {
+    height: 170px;
+  }
+}
+/* #region MARK: M:480 
+Media 480px*/
+@media screen and (max-width: 480px) {
+  :root {
+    --widthprincipal: 85%;
+  }
+  main {
+    padding: 2.5rem;
+  }
+  form {
+    padding: 2rem 2.5rem;
+  }
+  input.reset,
+  input.submit {
+    width: 50px;
+    margin: 0 0 0 1rem;
+  }
+}
+/* #endregion */
+/* #region MARK: M:360 
+Media 360px*/
+@media screen and (max-width: 360px) {
+  :root {
+    --widthprincipal: 90%;
+  }
+  main {
+    padding: 2rem;
+  }
+  form {
+    padding: 2rem 1.6rem;
+  }
+  label {
+    font-size: 0.8rem;
+  }
+  input.reset,
+  input.submit {
+    width: 42px;
+    font-size: 0.6rem;
+    margin: 0 0 0 0.4rem;
+  }
+}
+/* #endregion media 360 */
+/* #endregion MEDIA */

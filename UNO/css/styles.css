@@ -1,0 +1,457 @@
+/* #region MARK:ROOT 
+*/
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  --size_menu: 80px; /* DISEÑADO inicialmente en 80px */
+  --scale_menu: 1.4; /* DISEÑADO inicial en 140% para hover */
+  --font_menu: calc(
+    (var(--size_menu) / 5.7)
+  ); /* DISEÑADO inicial para 14px de rem */
+}
+/* #endregion */
+
+/* #region MARK:RESET 
+Inicio Reset */
+*,
+*::before,
+*::after {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; /* IMPORTANTE: Hace que mis tamaños dependan del width que le de a la caja (elemento), sin contar el tamaño de bordes o paddings */
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  width: 100%;
+  /* height: 100%; */
+  /* Le quito el height porque afecta mi STICKY, de tenerlo la barra que quiero se desplace y quede quita lo hará solo hasta la altura asignada en este body, por definición, todo lo que le haga a un padre de un STICKY puede afectarle */
+}
+/* #endregion 
+#region MARK: KEYFR
+*/
+@keyframes menu_appear {
+  0% {
+    scale: 60%;
+    transform: translateX(
+      calc(var(--size_menu) * -1.5)
+    ); /* Se quiere mover hacia la izquierda (en negativo) 1.5 veces la dimensión del tamaño del menu, es decir, si es 80px el ancho del menu, se moverá -120px (a la izq) */
+    opacity: 0;
+  }
+  100% {
+    scale: 100%;
+    transform: translateX(calc(var(--size_menu) / 2));
+    opacity: 1;
+  }
+}
+@keyframes menu_disappear {
+  0% {
+    scale: 100%;
+    transform: translateX(calc(var(--size_menu) / 2));
+    opacity: 1;
+  }
+  100% {
+    scale: 60%;
+    transform: translateX(
+      calc(var(--size_menu) * -1.5)
+    ); /* Se quiere mover hacia la izquierda (en negativo) 1.5 veces la dimensión del tamaño del menu, es decir, si es 80px el ancho del menu, se moverá -120px (a la izq) */
+    opacity: 0;
+  }
+}
+@keyframes buttons_appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes buttons_hover {
+  from {
+    scale: 100%;
+    transform: translateX(var(--li_menu));
+    background-color: rgb(165, 174, 189);
+  }
+  to {
+    scale: var(--scale_menu);
+    transform: translateX(var(--li_menu_2));
+    background-color: rgb(114, 127, 149);
+  }
+}
+@keyframes buttons_unhover {
+  from {
+    scale: var(--scale_menu);
+    transform: translateX(var(--li_menu_2));
+    background-color: rgb(114, 127, 149);
+  }
+  to {
+    scale: 100%;
+    transform: translateX(var(--li_menu));
+    background-color: rgb(165, 174, 189);
+  }
+}
+/* #region MARK:NAV 
+*/
+aside.menu {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: var(--size_menu);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: right;
+  z-index: 1;
+}
+div.site_velo {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 0; /* IMPORTANTE: z-index depende de la propiedad posición (position) por tanto aqui solo tengo dos fijas una para el velo blanco en 0 y otra para el menu de navegación en 1, es decir por encima del velo */
+  visibility: hidden;
+  background-color: rgba(255, 255, 255, 0);
+  transition: all 1s ease-in-out;
+}
+div.caja_menu {
+  position: absolute;
+  width: var(--size_menu);
+  scale: 100%;
+  transform: translateX(
+    calc(var(--size_menu) * -1.5)
+  ); /* Para dar directrices iniciales a la animación, se quiere mover hacia la izquierda (en negativo) 1.5 veces la dimensión del tamaño del menu, es decir, si es 80px el ancho del menu, se moverá -120px (a la izq) */
+  animation: menu_disappear 0.55s ease-in forwards;
+  opacity: 0; /* Para dar directrices iniciales a la animación */
+  z-index: -2; /* Capa -1 contiene botones capa 1 contiene contenido y boton de abrir menu */
+}
+svg#barra_nav {
+  fill: rgb(228, 234, 244);
+  filter: drop-shadow(0px 0px 4px rgb(165, 174, 189));
+}
+div.button_menu {
+  position: absolute;
+  z-index: -1;
+  margin-right: calc(
+    (var(--size_menu) - (var(--size_menu) / 1.6)) / 2
+  ); /* Tamaño del menu (80px) - tamaño del boton (50px en label) / 2 para obetener margen = 15px */
+  opacity: 0;
+}
+input#menuToggle {
+  visibility: hidden;
+}
+nav {
+  /* visibility: hidden; */
+  opacity: 0;
+  animation: menu_disappear 0.55s ease-in forwards;
+}
+label[for="menuToggle"] {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* YA QUE ES FELX alinea el item en la vertial */
+  width: calc((var(--size_menu) / 1.6));
+  height: calc((var(--size_menu) / 1.6));
+  border-radius: 50%;
+  background-color: rgb(165, 174, 189);
+  filter: drop-shadow(0px 0px 4px rgb(165, 174, 189));
+  z-index: 1;
+  margin-right: calc(
+    (var(--size_menu) - (var(--size_menu) / 1.6)) / 2
+  ); /* Tamaño del menu (80px) - tamaño del boton (50px en label) / 2 para obetener margen = 15px */
+  font-size: calc(var(--font_menu) * 3); /* font-size: 3rem donde em=14px*/
+  line-height: calc(
+    var(--font_menu) * 3
+  ); /* Para mantener la alineación vertical centrada en casos de menu muy pequeño como 20px */
+  color: #000000;
+  transition: all 0.4s ease-in;
+}
+label:hover {
+  color: white; /* Cambia el color de texto "+" */
+}
+input#menuToggle:checked + label + div.caja_menu {
+  animation: menu_appear 0.55s ease-in forwards;
+}
+input#menuToggle:checked + label + div.caja_menu + nav {
+  visibility: visible;
+  transform: translateX(calc(var(--size_menu) / 2));
+  animation: buttons_appear 0.55s ease-in forwards;
+  animation-delay: 0.45s;
+}
+input#menuToggle:checked + label {
+  /* Anima el botón "+" al presionar, transforma en "X" */
+  opacity: 0.8;
+  scale: 70%;
+  rotate: 45deg;
+  background-color: rgb(106, 65, 65);
+}
+/* HACER al "div" con class "site_velo" que es hermano y viene justo despues de ese hermano "aside" de id:aside_menu QUE CONTIENE (:has) un "input" con id:menuToggle QUE ESTÁ verificado (checked) */
+aside#aside_menu:has(input#menuToggle:checked) + div.site_velo {
+  visibility: visible;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+ul {
+  padding-bottom: calc(var(--size_menu) * 0.03);
+  /* Ya que en SVG pone un margen inferior */
+}
+li {
+  width: calc(var(--size_menu) / 1.75); /* Mide 45.7...px */
+  height: calc(var(--size_menu) / 1.75); /* Mide 45.7...px */
+  border-radius: 50%;
+  list-style: none;
+  margin: calc(var(--size_menu) * 0.32) calc(var(--size_menu) * 0.0575);
+  background-color: rgb(165, 174, 189);
+  animation: buttons_unhover 0.5s ease-in-out forwards;
+}
+li a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: calc(var(--font_menu) * 2); /* font-size: 2rem donde em=14px*/
+  line-height: calc(
+    var(--font_menu) * 2
+  ); /* Para mantener la alineación vertical centrada en casos de menu muy pequeño como 20px */
+  color: #000000;
+  transition: color 0.4s ease-in;
+}
+svg#menu_icon {
+  width: 100%;
+  height: 100%; /* IMPORTANTE width y height necesarios para SAFARI */
+  padding: 20%; /* Anter tenia width y height en 60%, pero para que el cambio de color de fill, se realice cuando me posiciono dentro del círculo y no solo de la figura es mejor darle padding */
+  fill: rgb(0, 0, 0);
+  transition: fill 0.4s ease-in;
+}
+a:hover {
+  color: white;
+}
+svg#menu_icon:hover {
+  fill: white;
+}
+span.menu_def {
+  display: flex;
+  pointer-events: none; /* IMPORTANTE, hace que al posicionarme sobre el texto de este SPAN, no se quede la animación pegada o errores al estar aún sobre contenido de "li" */
+  color: rgb(34, 314 34);
+  font-size: calc(var(--font_menu) * 1.5); /* font-size: 1.5rem donde em=14px*/
+  font-weight: 600;
+  text-wrap: nowrap;
+  text-shadow: 0 0 5px rgb(255, 255, 255);
+  transform: translate(
+    calc(var(--size_menu) / 2),
+    calc((var(--size_menu) / -2) + (var(--font_menu) * 0.25))
+  );
+  /* ESTA POSICION es para la animación la Posicion original y que se quiere tener es: transform: translate(calc(var(--size_menu) - (var(--size_menu) / 8)), calc(((var(--size_menu)) / -2) + 0.25rem)); 
+  Ver : [a:hover + span.menu_def]
+  DONDE (var(--font_menu) * 0.25) es para dar un 0.25rem y viene de la variable "--font_menu" 
+  */
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 0.2s;
+}
+a:hover + span.menu_def {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(
+    calc(var(--size_menu) - (var(--size_menu) / 8)),
+    calc((var(--size_menu) / -2) + (var(--font_menu) * 0.25))
+  );
+}
+li.menu_1,
+li.menu_5 {
+  --li_menu: calc((var(--size_menu) * 0.0575) * -5);
+  --li_menu_2: calc(
+    ((var(--size_menu) * 0.0575) * -5) -
+      (((var(--size_menu) * 0.0575) * -2.5) * (1 - (var(--scale_menu) - 1)))
+  );
+  transform: translateX(var(--li_menu));
+}
+li.menu_2,
+li.menu_4 {
+  --li_menu: calc((var(--size_menu) * 0.0575) * -1);
+  --li_menu_2: calc(
+    ((var(--size_menu) * 0.0575) * -1) -
+      (((var(--size_menu) * 0.0575) * -0.5) * (1 - (var(--scale_menu) - 1)))
+  );
+  transform: translateX(var(--li_menu));
+}
+li:hover {
+  animation: buttons_hover 0.5s ease-in-out forwards;
+}
+li.menu_2:hover,
+li.menu_4:hover {
+  --li_menu_2: calc(
+    ((var(--size_menu) * 0.0575) * -1) -
+      (((var(--size_menu) * 0.0575) * -0.5) * (1 - (var(--scale_menu) - 1)))
+  );
+  /* Calculo del valor: 
+  ((var(--size_menu) * 0.0575) * -1) Corresponde a la traslacion en X hacia el negativo (* -1) en un 5.75% del tamaño width dado al menu.
+  Luego el mismo valor se aumenta en el porcentaje designado en la variable "--scale_menu", * (1 - (var(--scale_menu) - 1))),  calculandolo 1 - (1.4 - 1) */
+}
+li.menu_1:hover,
+li.menu_5:hover {
+  --li_menu_2: calc(
+    ((var(--size_menu) * 0.0575) * -5) -
+      (((var(--size_menu) * 0.0575) * -2.5) * (1 - (var(--scale_menu) - 1)))
+  );
+  /* Calculo del valor: 
+  ((var(--size_menu) * 0.0575) * -5) Corresponde a la traslacion 5 veces en X hacia el negativo (* -5) en un 5.75% del tamaño width dado al menu.
+  Luego el mismo valor se aumenta en el porcentaje designado en la variable "--scale_menu", * (1 - (var(--scale_menu) - 1))),  calculandolo 1 - (1.4 - 1) */
+}
+/* #endregion */
+
+/* #region MARK: CONTENT
+*/
+
+header,
+main {
+  padding: 0 6rem;
+}
+header {
+  width: 100%;
+  height: calc(
+    100vh + 40px
+  ); /* Recordar que cualquier padre de este sticky que tenga un height afectara a este height */
+  top: calc((100vh) * -1);
+  background-color: rgb(0, 0, 0);
+  /* line-height: 16rem; */
+  overflow: hidden;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+h1 {
+  font-size: 2.5rem;
+  color: rgb(255, 255, 255);
+}
+h2 {
+  line-height: 2rem;
+}
+p {
+  line-height: 6rem;
+  columns: 2;
+}
+svg.try_conic {
+  max-width: 240px;
+}
+@keyframes rotateDeg {
+  0% {
+    background: conic-gradient(from 0deg, blue, red);
+  }
+  100% {
+    background: conic-gradient(from 360deg, blue, red);
+  }
+}
+.gradient {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 30%;
+  top: 100px;
+  left: 100px;
+  background: rgba(0, 0, 0, 0.441);
+  color: white;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+.gradient::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: conic-gradient(
+    from 0.25turn,
+    rgb(72, 72, 72),
+    rgba(90, 90, 90, 0)
+  );
+  background-size: 100% 100%;
+  /* transform: rotate(0deg) scale(1.5); */
+  z-index: -1;
+  transition: all 60s linear;
+}
+.gradient:hover::before {
+  background-image: conic-gradient(
+    from 45deg,
+    rgb(72, 72, 72),
+    rgba(90, 90, 90, 0)
+  );
+  /* transform: rotate(360deg) scale(1.5); */
+}
+/* .gradient:hover::before {
+  transform: rotate(45deg);
+  transition: transform 0.5s ease;
+  /* background-image: conic-gradient(to 360deg, blue, red); 
+} */
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+.cargadorTiempo {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(76, 45, 108, 0.477);
+  border-radius: 40%;
+  text-align: center;
+  /* animation: carg_anim 5s 2 linear; */
+}
+.cargadorTiempo::after {
+  content: "";
+  width: inherit;
+  height: inherit;
+  background-color: rgb(93, 31, 152);
+  position: absolute;
+  border-radius: 40%;
+  /* border: 30px solid #514b82; */
+  animation: carg_anim 5s 2 linear;
+}
+@keyframes carg_anim {
+  0% {
+    clip-path: polygon(50% 50%, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0);
+  }
+  12.5% {
+    clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  37.5% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0,
+      100% 0,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%
+    );
+  }
+  62.5% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0,
+      100% 0,
+      100% 100%,
+      0 100%,
+      0 100%,
+      0 100%
+    );
+  }
+  87.5% {
+    clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 0, 0 0);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 0);
+  }
+}

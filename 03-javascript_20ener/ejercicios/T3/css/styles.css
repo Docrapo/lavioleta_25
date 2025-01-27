@@ -1,0 +1,19 @@
+.fnt-_8 {
+  font-size: 0.8rem;
+}
+.fnt-_7 {
+  font-size: 0.7rem;
+}
+.animOpacityIn {
+  opacity: 100%;
+  transition: all 600ms ease-in-out;
+}
+.animOpacityOut {
+  opacity: 0%;
+  transition: all 600ms ease-in-out;
+}
+#input_num_04,
+#input_num_04b {
+  display: inline;
+  width: 20%;
+}

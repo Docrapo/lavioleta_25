@@ -1,0 +1,70 @@
+:root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+}
+*,
+*::before,
+*::after,
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  /* padding: 60px; */
+  background-color: #babeab;
+}
+main {
+  margin: auto;
+  width: 80%;
+  padding: 20px;
+}
+h1 {
+  letter-spacing: 0.5rem;
+  font-size: 1.5rem;
+  color: #211d70;
+  text-align: end;
+  clear: both;
+  text-transform: uppercase;
+  border: 1px solid black;
+}
+h2 {
+  background-color: #4d5a26;
+  color: white;
+  clear: both;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+img {
+  /* border: 1px solid black; */
+  max-width: 100%;
+}
+img.der {
+  float: right;
+  margin: 0 0 0.8rem 0.8rem;
+}
+img.izq {
+  float: left;
+  margin: 0 0.8rem 0.8rem 0;
+}
+p {
+  /* border: 1px solid black; */
+  /* text-align: justify; */
+  /* word-break: break-word; Esta en desudo */
+  /* word-wrap: break-word; */
+  overflow-wrap: break-word; /* Actual en CSS3 */
+  font-size: 0.7rem;
+}
+p.centrado {
+  text-align: center;
+  position: inherit;
+  margin-bottom: 0.8rem;
+}
+address {
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  font-size: 0.7rem;
+}

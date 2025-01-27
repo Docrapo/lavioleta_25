@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Audio y Video</title>
+  </head>
+  <body>
+    <h1>Audio y Video con HTML5</h1>
+    <h3>Audio</h3>
+    <audio autoplay controls muted>
+      <source
+        src="../media/HakunaMatataItMeansNoWorries.ogg"
+        type="audio/ogg"
+      />
+      <source
+        src="../media/HakunaMatataItMeansNoWorries.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    <br />
+    <audio
+      src="../media/HakunaMatataItMeansNoWorries.ogg"
+      type="audio/ogg"
+      controls
+    ></audio>
+    <h3>video</h3>
+    <video id="video1" width="420" poster="../img/musicos.jpg">
+      <source src="../media/musics.mp4" type="video/mp4" />
+      <source src="../media/musics.ogv" type="video/ogg" />
+    </video>
+    <p>
+      <button style="color: rgb(24, 26, 26)" onclick="reproducePara();">
+        &#10148;
+      </button>
+      <button style="color: rgb(165, 126, 42)" onclick="hacerGrande();">
+        +
+      </button>
+      <button style="color: rgb(42, 165, 75)" onclick="hacerPequenio();">
+        -
+      </button>
+      <button style="color: brown" onclick="hacerNormal();">o</button>
+    </p>
+    <a href="../index.html">Volver al Index</a>
+  </body>
+  <script src="../js/javascript.js"></script>
+</html>

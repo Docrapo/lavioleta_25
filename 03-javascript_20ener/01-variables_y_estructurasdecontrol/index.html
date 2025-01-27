@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables y Estructuras de Control</title>
+  </head>
+  <body>
+    <script>
+      var hola = "Hola mundo";
+      let hello = "Hello World";
+      console.log(hola);
+      console.log(hello);
+      console.log(window.hola);
+      console.log(window.hello); // MUESTRA undefined, ya que LET solo funciona dentro de su bloque, dentro del documento no de la ventana donde se muestra el documento.
+      function testVar() {
+        console.log(hola);
+        if (hola) {
+          hola = 800;
+          console.log(hola);
+        }
+      }
+      testVar();
+      console.log(hola);
+
+      function testLet() {
+        console.log(hello);
+        if (hello) {
+          let hello = 600; // Esta LET pertenece solo a este predicado, solo a este ambito, solo dentro de esta función, por tanto el valor hello 600 solo es válido dentro de esta función por tanto si muestro let fuera de esta función mostrará el valor que tenia antes.
+          console.log(hello);
+        }
+      }
+      testLet();
+      console.log(hello);
+    </script>
+    <script src="js/app1.js"></script>
+    <script src="js/app2.js"></script>
+  </body>
+</html>
