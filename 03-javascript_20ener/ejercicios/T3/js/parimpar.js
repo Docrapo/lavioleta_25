@@ -263,13 +263,64 @@ function ejercicioOcho() {
 }
 let btn_08 = (document.querySelector("#btn_ejer08").onclick = ejercicioOcho);
 
-const num_09 = document.querySelector("#input_num_09");
-const num_09valor = String(document.querySelector("#input_num_09").value);
-console.log(num_09);
 const btn_09 = document.querySelector("#btn_ejer09");
+const btn_borr_09 = document.querySelector("#btn_borr09");
 const muestra_09 = document.querySelector("#mostrar_09");
-const btn_borr_09 = document.querySelector("#btn_borra09");
 function ejercicioNueve() {
-  muestra_09.innerHTML = `El texto contiene ${num_09.length} carácteres <br/><em>${num_09}</em><br /><strong>${num_09}</strong><p stryle="color:red;">${num_09}</p><p style="font-size:2rem;>${num_09}<p>`;
+  const num_09 = String(document.querySelector("#input_num_09"));
+  const num_09valor = document.querySelector("#input_num_09").value;
+  muestra_09.innerHTML = `${div_st1}El texto contiene ${num_09.length} carácteres <br/><em>${num_09valor}</em><br /><strong>${num_09valor}</strong><p style="color:red;">${num_09valor}</p><p style="font-size:1.2rem;">${num_09valor}</p><p style="text-decoration-line:line-through;">${num_09valor}</p></div>`;
 }
+const borrarEjer09 = () => {
+  document.querySelector("#input_num_09").value = ``;
+  muestra_09.innerHTML = ``;
+  document.querySelector("#mostrar_09").style = "";
+};
 btn_09.onclick = ejercicioNueve;
+btn_borr_09.onclick = borrarEjer09;
+
+var muestra_10 = document.querySelector("#mostrar_10");
+const btn_10 = document.querySelector("#btn_ejer10");
+const btn_10b = document.querySelector("#btn_ejer10b");
+const btn_10c = document.querySelector("#btn_ejer10c");
+/* function ejercicioDiez() {
+  muestra_10.innerHTML = `<div style="width:100%; height:100%;" id="ampolletaID" class="ampolleta"><div>`;
+} */
+const borrarAmp = () => {
+  muestra_10.innerHTML = ``;
+  muestra_10.classList.remove("ampolleta");
+  muestra_10.classList.remove("ampolleta2");
+};
+var x = 0;
+function ejercicioDiez() {
+  borrarAmp();
+  if (x == 0) {
+    muestra_10.classList.remove("ampolleta");
+    muestra_10.classList.add("ampolleta2");
+    x = 1;
+  } else {
+    muestra_10.classList.remove("ampolleta2");
+    muestra_10.classList.add("ampolleta");
+    x = 0;
+  }
+}
+btn_10.onclick = ejercicioDiez;
+
+x = 0;
+function ejercicioDiezb() {
+  borrarAmp();
+  if (x == 0) {
+    muestra_10.innerHTML = `<img src="img/apagada.gif" alt="">`;
+    x = 1;
+  } else {
+    muestra_10.innerHTML = `<img src="img/encendida.gif" alt="">`;
+    x = 0;
+  }
+}
+btn_10b.onclick = ejercicioDiezb;
+
+function ejercicioDiezc() {
+  var muestra_10c = document.getElementById("mostrar_10c");
+  muestra_10c.classList.toggle("ampolleta3");
+}
+btn_10c.onclick = ejercicioDiezc;
