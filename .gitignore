@@ -1,0 +1,4 @@
+#Archivos que se ignorarán en push de git
+[Tt]humbs.db
+*.DS_Store
+*.7z
