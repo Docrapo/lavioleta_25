@@ -47,6 +47,36 @@
         quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper,
         odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet,
         consectetuer adipiscing elit. Duis scelerisque.</p>
+        <script>
+         const enlace = document.querySelectorAll("a");
+         let id, param;
+         const muestraOculta = (param) => {
+          id = document.querySelector("#contenidos_" + param);
+          const enlace2 = document.querySelector("#enlace_"+param);
+          /* enlace = document.querySelectorAll("a"); */
+          if(id.style.display == "" || id.style.display == "block") {
+           id.style.display = "none";
+           enlace2.innerHTML = "Mostrar contenido";
+          } else {
+           id.style.display = "block";
+           enlace2.innerHTML = "Ocultar contenidos";
+          }
+         };
+
+         window.addEventListener("load", () => {
+          /* enlace = document.querySelectorAll("a"); */
+          /* id = document.querySelector("#contenidos_" + param); */
+          for (let i=0; i < enlace.length; i++) {
+           enlace[i].onclick = function () {
+            param = enlace[i].id;
+            if (this.id == param) {
+             param = param.substring(7,8);
+             muestraOculta(param);
+            }
+           };
+          }
+         })
+        </script>
    
 </body>
 

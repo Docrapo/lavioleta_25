@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="../../bootstrap-5.3.3-dist/css/bootstrap.css"
+    />
+    <title>Validación Formulario Fecha</title>
+  </head>
+  <body>
+    <main class="container-fluid">
+      <h1>Contacta con nosotros</h1>
+      <form
+        method="post"
+        id="firstContact"
+        name="firstContact"
+        action="envio.php"
+      >
+        <!-- onsubmit="return valida();"> Todos los valores que se van a usar en el formulario deben devolver true -->
+        <fieldset class="form-group">
+          <label for="miedad">Fecha de nacimiento:</label>
+          <input
+            type="date"
+            id="miedad"
+            name="miedad2"
+            class="form-control"
+            value=""
+          />
+          <small id="mostra1" class="text-muted"></small>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="dni2">Fecha de nacimiento:</label>
+          <input
+            type="text"
+            id="dni"
+            name="dni2"
+            class="form-control"
+            value=""
+          />
+          <small id="mostra2" class="text-muted"></small>
+        </fieldset>
+        <div id="error"></div>
+        <button type="submit" name="enviar" id="name" class="btn btn-primary">
+          Enviar
+        </button>
+        <button
+          type="button"
+          name="borrar"
+          id="borrar"
+          class="btn btn-secondary"
+        >
+          Borrar Formulario
+        </button>
+        <!-- type="reset" hace el borrado, pero como queremos que muestre un aviso le daremos type="button" -->
+      </form>
+    </main>
+    <script src="js/validaFechaForm.js"></script>
+  </body>
+</html>
