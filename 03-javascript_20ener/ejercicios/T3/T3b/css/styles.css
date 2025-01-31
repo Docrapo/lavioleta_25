@@ -1,0 +1,18 @@
+.cont_ejer1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  border: 1px solid black;
+}
+.mostrar_ejer1a {
+  display: inline;
+}
+#mostrar_ejer1c,
+#mostrar_ejer1c {
+  border: 1px solid black;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+li {
+  list-style-type: none;
+}
