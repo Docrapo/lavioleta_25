@@ -1,0 +1,53 @@
+.verificado {
+  border: 2px solid green;
+}
+.verificadoLet::before {
+  content: "✔";
+  color: green;
+}
+
+.noverificado {
+  border: 2px solid red;
+}
+.noverificadoLet::before {
+  content: "✘";
+  color: red;
+}
+
+.limpia::before {
+  content: none;
+  color: none;
+}
+fieldset {
+  width: 80%;
+  border: 0;
+  margin: auto;
+  display: flex;
+  flex-flow: column wrap;
+}
+input {
+  width: 40%;
+  height: 20px;
+  border-radius: 5px;
+  margin-bottom: 0.6rem;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input#dia_usuario,
+input#mes_usuario,
+input#anio_usuario,
+label#dia2,
+label#mes2,
+label#anio2 {
+  margin-left: 2rem;
+  width: 30%;
+}
+button {
+  width: 20%;
+}

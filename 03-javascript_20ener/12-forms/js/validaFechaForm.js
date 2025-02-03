@@ -8,11 +8,12 @@ const patronDni = /^[XYZ]?\d{5,8}[A-Z]{1}$/;
 /* ? si lo hay */ /* $ de la A a la Z y solo 1 */ formulario.addEventListener(
   "submit",
   (e) => {
+    /* El escuchador esta pendiente del submit */
     const mydni = c_dni();
     const myedad = edad();
 
     if (!mydni || !myedad) {
-      e.preventDefault();
+      e.preventDefault(); /* Cancela una evento si es posible, como cancelar el "submit" del formulario en este caso */
       error.innerHTML =
         "ERRORNUM NO se ha podido enviar el formulario. Por favor, revisa que todos los campos estén rellenados correctamente.";
       error.style.color = "red";
