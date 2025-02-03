@@ -9,12 +9,7 @@ const patronEmail =
   /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/;
 const fechaActual = new Date();
 let anio_hoy = fechaActual.getFullYear();
-/* let mes_hoy = fechaActual.getMonth();
-/* alert(mes_hoy);
-let dia_hoy = fechaActual.getDay(); */
-/* const patronMes = /[^0]|[0-2]/; */
-/* MARK: VAL:dni
- */
+
 const lee_dni = () => {
   let recogidaDni = formulario.user_dni.value;
   /* recojo el input de name=user_dni en el formulario name=formulario */
