@@ -38,7 +38,41 @@ pistaHtml.innerHTML = pistaPalabra;
 let letraEscrita = document.querySelector(".lletra").value;
 const letrasErroneas = [];
 const muestraErrorLet = document.querySelector(".letrasErroneas");
-const revisaLetra = () => {};
+
+/* */
+const revisaLetra = (event) => {
+  const letraEscrita = event.key.toLowerCase();
+  let posiciones = [];
+
+  palabraRecorre.forEach((palabraRecorre, index) => {
+    if (palabraRecorre === letraEscrita) {
+      posiciones.push(index);
+      let prueba = document.querySelector(`#letra_${index}`);
+      prueba.classList.remove("cards");
+      prueba.classList.add("ocultardiv");
+    }
+  });
+  if (posiciones.length > 0) {
+    console.log(
+      `Letra correcta: "${letraEscrita}" en posiciones: ${posiciones}`
+    );
+  } else {
+    // Si la letra no está en el array y aún no ha sido guardada, la añadimos
+    if (!letrasErroneas.includes(letraEscrita)) {
+      letrasErroneas.push(letraEscrita);
+    }
+    muestraErrorLet.innerHTML = `Letras erroneas: ${letrasErroneas.join(", ")}`;
+    console.log(
+      `Letra incorrecta: "${letraEscrita}". Letras incorrectas hasta ahora: [${letrasErroneas.join(
+        ", "
+      )}]`
+    );
+  }
+  /* let prueba = document.querySelector(`#letra_${arrayIndex}`);
+  prueba.classList.remove("cards");
+  prueba.classList.add("ocultardiv"); */
+  inputFocus.value = "";
+};
 
 /* console.log(palabraRecorre); */
 /* let botonRespuesta = document.querySelector(".reset-btn");

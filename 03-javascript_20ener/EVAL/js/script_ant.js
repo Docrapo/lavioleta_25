@@ -39,38 +39,27 @@ pistaHtml.innerHTML = pistaPalabra;
 const letrasErroneas = [];
 const muestraErrorLet = document.querySelector(".letrasErroneas");
 const revisaLetra = () => {
-  if (contKey < 6) {
-    //letraEscrita = document.querySelector(".lletra").value;
-    for (let t = 0; t < palabraRecorre.length; t++) {
-      let letraEscrita = document.querySelector(".lletra").value;
-      if (
-        letraEscrita === palabraRecorre[t] &&
-        letraEscrita !== letrasErroneas[t]
-      ) {
-        /* console.log(letraEscrita);
+  let letraEscrita = document.querySelector(".lletra").value;
+  //letraEscrita = document.querySelector(".lletra").value;
+  for (let t = 0; t < palabraRecorre.length; t++) {
+    if (letraEscrita === palabraRecorre[t]) {
+      /* console.log(letraEscrita);
         console.log(palabraRecorre[t]);
         console.log(palabraRecorre); */
-        let prueba = document.querySelector(`#letra_${t}`);
-        prueba.classList.remove("cards");
-        prueba.classList.add("ocultardiv");
+      let prueba = document.querySelector(`#letra_${t}`);
+      prueba.classList.remove("cards");
+      prueba.classList.add("ocultardiv");
 
-        /* console.log(prueba); */
-      } else {
-        letrasErroneas.push(letraEscrita);
-        console.log(letrasErroneas);
-        /* console.log(palabraRecorre[t]); */
-        /* document.body.onkeyup = function (e) {
-          contKey++;
-          console.log(contKey);
-        }; */
-        muestraErrorLet.innerHTML = letraEscrita;
-        return;
-      }
+      /* console.log(prueba); */
     }
-    /* inputFocus.value = ""; */
-  } else {
-    muestraErrorLet.innerHTML = "FIN";
   }
+  for (let g = 0; g < palabraRecorre.length; g++) {
+    if (letraEscrita !== palabraRecorre[g]) {
+      console.log(letraEscrita);
+      muestraErrorLet.innerHTML = letraEscrita;
+    }
+  }
+  inputFocus.value = "";
 };
 
 /* console.log(palabraRecorre); */
