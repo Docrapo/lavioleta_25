@@ -1,4 +1,6 @@
 let inputFocus = document.querySelector(".lletra");
+const recarga = document.querySelector(".reset-btn");
+recarga.setAttribute("onclick", "location.reload()");
 setTimeout(function () {
   inputFocus.focus();
 }, 1);
@@ -7,20 +9,14 @@ document.onmousedown = (e) => {
 };
 inputFocus.value = "";
 let contKey = 0;
-
-let largo = listado.length;
-/* console.log(largo); */
-let randomPalabra = Math.floor(Math.random() * largo);
-/* console.log(randomPalabra);
-console.log(listado[randomPalabra].palabra); */
-const palabraDescubrir = listado[randomPalabra].palabra;
 const pistaPalabra = listado[randomPalabra].pista;
-/* console.log(pistaPalabra);
-console.log(palabraDescubrir.length); */
-const palabraRecorre = [palabraDescubrir.length];
+let mensajeFinal = Math.floor(Math.random() * msg.length);
+const mensajeErr = msgError[mensajeFinal];
+const mensajeWin = msg[mensajeFinal];
+const palabraRecorre = [palabra.length];
 let muestraCards = document.querySelector(".inputs");
-for (let u = 0; u < palabraDescubrir.length; u++) {
-  palabraRecorre[u] = palabraDescubrir.substring(u, u + 1);
+for (let u = 0; u < palabra.length; u++) {
+  palabraRecorre[u] = palabra.substring(u, u + 1);
   let card = document.createElement("div");
   let contenido = document.createTextNode(palabraRecorre[u]);
   card.appendChild(contenido);
@@ -30,55 +26,45 @@ for (let u = 0; u < palabraDescubrir.length; u++) {
 }
 let pistaHtml = document.querySelector(".pista");
 pistaHtml.innerHTML = pistaPalabra;
-/* const revisaLetras = (event) => {
-  switch (event.target.id) {
-  }
-}; */
-
 let letraEscrita = document.querySelector(".lletra").value;
+let maxIntentos;
+let contadorWin = [];
 const letrasErroneas = [];
-const muestraErrorLet = document.querySelector(".letrasErroneas");
-
-/* */
+const muestraErrorLet = document.querySelector(".letrasErroneas span");
+const muestraRestantes = document.querySelector(".restantes span");
+const muestraResultado = document.querySelector(".pista");
+if (palabra.length >= 7) maxIntentos = 8;
+else maxIntentos = 6;
 const revisaLetra = (event) => {
-  const letraEscrita = event.key.toLowerCase();
-  let posiciones = [];
-
-  palabraRecorre.forEach((palabraRecorre, index) => {
-    if (palabraRecorre === letraEscrita) {
-      posiciones.push(index);
-      let prueba = document.querySelector(`#letra_${index}`);
-      prueba.classList.remove("cards");
-      prueba.classList.add("ocultardiv");
+  if (maxIntentos != 0) {
+    const letraEscrita = event.key.toLowerCase();
+    let posiciones = [];
+    palabraRecorre.forEach((palabraRecorre, index) => {
+      if (palabraRecorre === letraEscrita) {
+        posiciones.push(index);
+        contadorWin.push(index);
+        let prueba = document.querySelector(`#letra_${index}`);
+        prueba.classList.remove("cards");
+        prueba.classList.add("ocultardiv");
+        console.log(contadorWin);
+      }
+    });
+    if (palabraRecorre.length == contadorWin.length) {
+      muestraResultado.innerHTML = mensajeWin;
+      return;
     }
-  });
-  if (posiciones.length > 0) {
-    console.log(
-      `Letra correcta: "${letraEscrita}" en posiciones: ${posiciones}`
-    );
-  } else {
-    // Si la letra no está en el array y aún no ha sido guardada, la añadimos
-    if (!letrasErroneas.includes(letraEscrita)) {
-      letrasErroneas.push(letraEscrita);
+    if (posiciones.length > 0) {
+    } else {
+      if (!letrasErroneas.includes(letraEscrita)) {
+        letrasErroneas.push(letraEscrita);
+      }
+      muestraErrorLet.innerHTML = ` ${letrasErroneas.join(", ")}`;
+      maxIntentos--;
+      muestraRestantes.innerHTML = maxIntentos;
     }
-    muestraErrorLet.innerHTML = `Letras erroneas: ${letrasErroneas.join(", ")}`;
-    console.log(
-      `Letra incorrecta: "${letraEscrita}". Letras incorrectas hasta ahora: [${letrasErroneas.join(
-        ", "
-      )}]`
-    );
+    inputFocus.value = "";
   }
-  /* let prueba = document.querySelector(`#letra_${arrayIndex}`);
-  prueba.classList.remove("cards");
-  prueba.classList.add("ocultardiv"); */
-  inputFocus.value = "";
+  if (maxIntentos === 0) muestraResultado.innerHTML = mensajeErr;
+  return;
 };
-
-/* console.log(palabraRecorre); */
-/* let botonRespuesta = document.querySelector(".reset-btn");
-const mostrarTexto = () => {
-  letraEscrita = document.querySelector(".lletra").value;
-  document.querySelector(".mostra").innerHTML = letraEscrita;
-};
-botonRespuesta.onclick = mostrarTexto; */
 document.addEventListener("keyup", revisaLetra);

@@ -1,4 +1,3 @@
-/* */
 const formulario = document.formulario_ejT4;
 const error = document.querySelector("#error");
 const error2 = document.querySelector("#error2");
@@ -70,7 +69,7 @@ const lee_dia = () => {
   recogidaAnio = formulario.user_year.value;
   let recogidaDia = formulario.user_day.value;
   if (recogidaMes == 0 && recogidaDia <= 31 && recogidaDia > 0) {
-    error2.innerHTML = "QUE";
+    /* error2.innerHTML = "QUE"; */
     return true;
   } else if (recogidaDia <= 31 && recogidaDia != 0) {
     if (
@@ -133,7 +132,6 @@ const lee_mes = () => {
 
 const lee_anio = () => {
   let recogidaAnio = formulario.user_year.value;
-  /* let resultadoMes = recogidaMes.match(patronMes); */
   /* recorre la variable para ver si cumple con el patron */
   if (
     recogidaAnio.length == 4 &&
@@ -146,13 +144,10 @@ const lee_anio = () => {
   }
 };
 
-let botonTest = document.querySelector("#btn_test");
 const mayoria_edad = () => {
   let valid_Anio = lee_anio();
   let valid_Mes = lee_mes();
   let valid_Dia = lee_dia();
-  /* error2.innerHTML = `${dia_hoy} ${mes_hoy} ${anio_hoy}`; */
-  /* dia_hoy = fechaActual.getDay(); */
   if (valid_Anio && valid_Mes && valid_Dia) {
     recogidaAnio = formulario.user_year.value;
     recogidaMes = formulario.user_month.value;
@@ -169,14 +164,12 @@ const mayoria_edad = () => {
     }
   }
 };
-botonTest.onclick = mayoria_edad;
 
 addEventListener("submit", (e) => {
   /* El escuchador esta pendiente del submit */
   const mydni = lee_dni();
   const myTel = lee_telefono();
-  /* console.log(mydni); si es true devuelve true, no false */
-  /* console.log(!mydni); se pregunta si es true en caso de serlo devuelve falso*/
+
   if (!mydni || !myTel) {
     /* si no es verdad */
     e.preventDefault(); /* Cancela una evento si es posible, como cancelar el "submit" del formulario en este caso */
@@ -189,27 +182,28 @@ addEventListener("submit", (e) => {
     return true;
   }
 });
+let estiloUser = formulario.user_name;
+let estiloDni = formulario.user_dni;
+let estiloTel = formulario.user_phone;
+let estiloDia = formulario.user_day;
+let estiloMes = formulario.user_month;
+let estiloAnio = formulario.user_year;
+let estiloEmail = formulario.user_email;
+let estiloUser2 = document.getElementById("user2");
+let estiloEmail2 = document.getElementById("email2");
+let estiloDni2 = document.getElementById("dni2");
+let estiloTel2 = document.getElementById("tel2");
+let estiloDia2 = document.getElementById("dia2");
+let estiloMes2 = document.getElementById("mes2");
+let estiloAnio2 = document.getElementById("anio2");
 const cambiaEstiloForm = (event) => {
-  let estiloUser = formulario.user_name;
-  let estiloDni = formulario.user_dni;
-  let estiloTel = formulario.user_phone;
-  let estiloDia = formulario.user_day;
-  let estiloMes = formulario.user_month;
-  let estiloAnio = formulario.user_year;
-  let estiloEmail = formulario.user_email;
-  let estiloUser2 = document.getElementById("user2");
-  let estiloEmail2 = document.getElementById("email2");
-  let estiloDni2 = document.getElementById("dni2");
-  let estiloTel2 = document.getElementById("tel2");
-  let estiloDia2 = document.getElementById("dia2");
-  let estiloMes2 = document.getElementById("mes2");
-  let estiloAnio2 = document.getElementById("anio2");
   let result, result_day, result_edad;
   switch (event.target.name) {
     /* Cuando un evento que es target (posicionarse o estar sobre) un name .... Accedemos a los names de las etiquetas HTML y hacemos... */
     case "user_name":
       result = lee_usuario();
       if (result) {
+        error.innerHTML = "Usuario válido";
         estiloUser.classList.remove("noverificado");
         estiloUser.classList.add("verificado");
         estiloUser2.classList.remove("noverificadoLet");
@@ -225,8 +219,7 @@ const cambiaEstiloForm = (event) => {
     case "user_phone" /* TOMA el NAME */:
       result = lee_telefono();
       if (result) {
-        error.innerHTML = "Hola";
-        /* estiloTel.style.border = "2px solid green";  */ /* TOMA el ID */
+        error.innerHTML = "Telefono Válido";
         estiloTel.classList.remove("noverificado");
         estiloTel.classList.add("verificado");
         estiloTel2.classList.remove("noverificadoLet");
@@ -237,7 +230,6 @@ const cambiaEstiloForm = (event) => {
         estiloTel.classList.add("noverificado");
         estiloTel2.classList.remove("verificadoLet");
         estiloTel2.classList.add("noverificadoLet");
-        /* estiloTel.style.border = "2px solid red"; */
       }
       break;
 
@@ -249,15 +241,12 @@ const cambiaEstiloForm = (event) => {
         estiloDni.classList.add("verificado");
         estiloDni2.classList.remove("noverificadoLet");
         estiloDni2.classList.add("verificadoLet");
-        /* estiloDni.style.border = "2px solid green";
-        error2.innerHTMLHTML = ""; */
       } else {
         error.innerHTML = "DNI o NIE no válido";
         estiloDni.classList.remove("verificado");
         estiloDni.classList.add("noverificado");
         estiloDni2.classList.remove("verificadoLet");
         estiloDni2.classList.add("noverificadoLet");
-        /* estiloDni.style.border = "2px solid red"; */
       }
       break;
     case "user_day":
@@ -303,7 +292,8 @@ const cambiaEstiloForm = (event) => {
         estiloAnio2.classList.remove("noverificadoLet");
         estiloAnio2.classList.add("verificadoLet");
       } else if (!result_edad) {
-        error.innerHTMLHTML = "DEBES SER MAYOR DE EDAD";
+        error.innerHTML = "Año no válido";
+        error2.innerHTMLHTML = "DEBES SER MAYOR DE EDAD";
         estiloAnio.classList.remove("verificado");
         estiloAnio.classList.add("noverificado");
         estiloAnio2.classList.remove("verificadoLet");
@@ -324,7 +314,6 @@ const cambiaEstiloForm = (event) => {
         estiloEmail.classList.add("verificado");
         estiloEmail2.classList.remove("noverificadoLet");
         estiloEmail2.classList.add("verificadoLet");
-        error2.innerHTMLHTML = "";
       } else {
         error.innerHTML = "Email no válido";
         estiloEmail.classList.remove("verificado");
@@ -347,3 +336,69 @@ const listeners = [
 ];
 for (const listener of listeners)
   listener.addEventListener("keyup", cambiaEstiloForm);
+
+function setCookie(cname, cvalue, exdays) {
+  let d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  let expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  }
+  return "";
+}
+function guardarValor() {
+  setCookie("user_name", formulario.user_name.value, 1 / 24);
+  setCookie("user_phone", formulario.user_phone.value, 1 / 24);
+  setCookie("user_day", formulario.user_day.value, 1 / 24);
+  setCookie("user_month", formulario.user_month.value, 1 / 24);
+  setCookie("user_year", formulario.user_year.value, 1 / 24);
+  setCookie("user_email", formulario.user_email.value, 1 / 24);
+  setCookie("user_dni", formulario.user_dni.value, 1 / 24);
+}
+function extraeValor() {
+  let cookieName = getCookie("user_name");
+  let cookiePhone = getCookie("user_phone");
+  let cookieDay = getCookie("user_day");
+  let cookieMonth = getCookie("user_month");
+  let cookieYear = getCookie("user_year");
+  let cookieEmail = getCookie("user_email");
+  let cookieDni = getCookie("user_dni");
+  formulario.user_name.value = cookieName;
+  formulario.user_phone.value = cookiePhone;
+  formulario.user_day.value = cookieDay;
+  formulario.user_month.value = cookieMonth;
+  formulario.user_year.value = cookieYear;
+  formulario.user_email.value = cookieEmail;
+  formulario.user_dni.value = cookieDni;
+}
+
+function limpiarDatos() {
+  formulario.reset();
+  estiloEmail.className = ``;
+  estiloEmail2.className = ``;
+  estiloUser.className = ``;
+  estiloUser2.className = ``;
+  estiloDni.className = ``;
+  estiloDni2.className = ``;
+  estiloTel.className = ``;
+  estiloTel2.className = ``;
+  estiloDia.className = ``;
+  estiloDia2.className = ``;
+  estiloMes.className = ``;
+  estiloMes2.className = ``;
+  estiloAnio.className = ``;
+  estiloAnio2.className = ``;
+  error.innerHTML = ``;
+}
+let botonSave = document.querySelector("#btn_guarda");
+botonSave.onclick = guardarValor;
+let botonExtrae = document.querySelector("#btn_extrae");
+botonExtrae.onclick = extraeValor;
+let botonBorra = document.querySelector("#btn_limpia");
+botonBorra.onclick = limpiarDatos;

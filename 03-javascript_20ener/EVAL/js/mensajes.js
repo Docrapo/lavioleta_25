@@ -1,3 +1,5 @@
+let randomPalabra = Math.floor(Math.random() * listado.length);
+const palabra = listado[randomPalabra].palabra;
 const msg = [
   `Enhorabuena! Encontraste la palabra "${palabra.toUpperCase()}". Has ganado, pero en realidad has perdido (tu tiempo)`,
   `Enhorabuena! Encontraste la palabra "${palabra.toUpperCase()}". Deja de jugar a esto y echa un Euromillón ... a ver si sales "probre"`,

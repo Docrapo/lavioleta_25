@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="css/formulari.css" />
   </head>
   <body>
-    <form action="" name="formulario_ejT4">
+    <form action="" method="post" name="formulario_ejT4">
       <fieldset>
         <label for="nom_usuario" id="user2">Usuario: </label>
-        <input type="text" id="nom_usuario" name="user_name" maxlength="20" />
+        <input
+          type="text"
+          id="nom_usuario"
+          name="user_name"
+          maxlength="20"
+          required
+        />
         <label for="tel_usuario" id="tel2">Teléfono :</label>
         <input
           type="number"
@@ -18,6 +24,7 @@
           id="tel_usuario"
           maxlength="12"
           pattern="^[+]?[\d]{9,12}"
+          required
         />
         <a>Nacimiento</a>
         <label for="dia_usuario" id="dia2">dia: </label>
@@ -54,17 +61,21 @@
         />
         <label for="dni_usuario" id="dni2">DNI: </label>
         <input type="text" id="dni_usuario" name="user_dni" required />
-        <label for="terminos_usuario">Acepto las condiciones: </label>
-        <input
-          type="checkbox"
-          id="terminos_usuario"
-          name="user_terms"
-          required
-        />
+        <div class="campo_horizontal">
+          <label for="terminos_usuario">Acepto las condiciones: </label>
+          <input
+            type="checkbox"
+            id="terminos_usuario"
+            name="user_terms"
+            required
+          />
+        </div>
       </fieldset>
-      <fieldset>
-        <button type="submit" id="btn_enviar">ENVIAR</button>
-        <button type="button" id="btn_test">TEST</button>
+      <fieldset class="campo_horizontal">
+        <button type="submit" id="btn_enviar">REGISTRATE</button>
+        <button type="button" id="btn_limpia">LIMPIA DATOS</button>
+        <button type="button" id="btn_guarda">GUARDA DATOS</button>
+        <button type="button" id="btn_extrae">RECUPERA DATOS</button>
       </fieldset>
       <fieldset>
         <div id="error"></div>

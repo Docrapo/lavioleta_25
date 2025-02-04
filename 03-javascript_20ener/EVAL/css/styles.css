@@ -2,7 +2,22 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
 }
-
+main {
+  width: 80%;
+  margin: auto;
+}
+p.pista {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.mostra {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-bottom: 2rem;
+}
+input.lletra {
+  transform: scale(0%);
+}
 div.inputs {
   display: flex;
   flex-flow: row wrap;
