@@ -1,0 +1,71 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  --colorfondo: #f8e8cb;
+  --colorcards: #f7e9eb;
+  --colorcardsOff: #45383a;
+  --fuenteDefault: 1rem;
+  --fuenteColor: black;
+}
+.normal {
+  --colorfondo: #f8e8cb;
+  --fuenteColor: black;
+}
+h1 {
+  color: var(--fuenteColor);
+  font-size: calc(var(--fuenteDefault) * 2.4);
+}
+body {
+  background-color: var(--colorfondo);
+}
+main {
+  width: 80%;
+  margin: auto;
+}
+p.restantes,
+p.letrasErroneas {
+  color: var(--fuenteColor);
+  font-size: var(--fuenteDefault);
+}
+p.pista {
+  color: var(--fuenteColor);
+  font-size: calc(var(--fuenteDefault) * 1.2);
+  font-weight: 600;
+}
+.mostra {
+  font-size: calc(var(--fuenteDefault) * 1.2);
+  font-weight: 600;
+  padding-bottom: 2rem;
+}
+input.lletra {
+  transform: scale(0%);
+}
+div.inputs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+div.cards {
+  width: calc(var(--fuenteDefault) * 4);
+  height: calc(var(--fuenteDefault) * 8);
+  background-color: var(--colorcardsOff);
+  border-radius: 15px;
+  border: 1px solid black;
+  text-align: center;
+  align-content: center;
+  margin: 0.6rem 1.2rem;
+  font-size: calc(var(--fuenteDefault) * 3);
+  color: transparent;
+}
+.ocultardiv {
+  width: calc(var(--fuenteDefault) * 4);
+  height: calc(var(--fuenteDefault) * 8);
+  background-color: var(--colorcards);
+  border-radius: 15px;
+  border: 1px solid black;
+  text-align: center;
+  align-content: center;
+  margin: 0.6rem 1.2rem;
+  font-size: calc(var(--fuenteDefault) * 3);
+  color: green;
+}
