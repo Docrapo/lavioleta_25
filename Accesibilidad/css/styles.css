@@ -4,6 +4,11 @@
   --colorfondo: #f8e8cb;
   --colorcards: #f7e9eb;
   --colorcardsOff: #45383a;
+  --colorFondoCont: #272324;
+  --borderColor: black;
+  --borderColor2: black;
+  --outlineCont: 0px;
+  --borderSize: 1px;
   --fuenteDefault: 1rem;
   --fuenteColor: black;
 }
@@ -50,22 +55,47 @@ div.cards {
   height: calc(var(--fuenteDefault) * 8);
   background-color: var(--colorcardsOff);
   border-radius: 15px;
-  border: 1px solid black;
+  border: var(--borderSize) solid var(--borderColor);
   text-align: center;
   align-content: center;
   margin: 0.6rem 1.2rem;
   font-size: calc(var(--fuenteDefault) * 3);
   color: transparent;
 }
+div.barraAccess {
+  display: flex;
+  flex-flow: row nowrap;
+  font-weight: 700;
+  align-items: center;
+}
+.access2 {
+  color: black;
+}
+.access {
+  width: 20px;
+  height: 20px;
+  fill: black;
+  margin: 0 1rem;
+}
+button.reset-btn {
+  font-size: calc(var(--fuenteDefault) / 1);
+  font-weight: 500;
+  padding: calc(var(--fuenteDefault) * 0.3) calc(var(--fuenteDefault) * 1.5);
+  background-color: #a79d9e;
+  text-transform: capitalize;
+  color: black;
+  border-radius: calc(var(--fuenteDefault) * 1);
+}
 .ocultardiv {
   width: calc(var(--fuenteDefault) * 4);
   height: calc(var(--fuenteDefault) * 8);
   background-color: var(--colorcards);
   border-radius: 15px;
-  border: 1px solid black;
+  border: var(--borderSize) solid var(--borderColor2);
+  outline: var(--outlineCont) solid var(--borderColor);
   text-align: center;
   align-content: center;
   margin: 0.6rem 1.2rem;
   font-size: calc(var(--fuenteDefault) * 3);
-  color: green;
+  color: black;
 }

@@ -3,6 +3,10 @@ const recarga = document.querySelector(".reset-btn");
 recarga.setAttribute("onclick", "location.reload()");
 let fontSize = 1;
 const root = document.querySelector(":root");
+const buttonCss = document.querySelector("button.reset-btn");
+const svgCss = document.querySelectorAll("svg.access");
+const textAccess = document.querySelector(".access2");
+console.log(svgCss);
 function fontBigger() {
   if (fontSize != 2.4) {
     fontSize = fontSize + 0.2;
@@ -15,9 +19,46 @@ function fontSmaller() {
     root.style.setProperty(`--fuenteDefault`, `${fontSize}rem`);
   }
 }
+let k = 0;
+let p = 0;
 function contrasteAcces() {
-  root.style.setProperty(`--colorfondo`, `#45383a`);
-  root.style.setProperty(`--fuenteColor`, `#f8e8cb`);
+  if (k == 0) {
+    root.style.setProperty(`--colorfondo`, `#272324`);
+    root.style.setProperty(`--fuenteColor`, `#f8e8cb`);
+    root.style.setProperty(`--borderColor`, `#f8e8cb`);
+    root.style.setProperty(`--borderSize`, `4px`);
+    root.style.setProperty(`--outlineCont`, `3px`);
+    buttonCss.style.setProperty(`text-transform`, `uppercase`);
+    buttonCss.style.setProperty(`background-color`, `#f8e8cb`);
+    buttonCss.style.setProperty(
+      `padding`,
+      `calc(var(--fuenteDefault) * 0.5) calc(var(--fuenteDefault) * 1.8)`
+    );
+    buttonCss.style.setProperty(`font-weight`, `800`);
+    textAccess.style.setProperty(`color`, `#f8e8cb`);
+    for (p = 0; p < svgCss.length; p++) {
+      svgCss[p].style.setProperty(`fill`, `#f8e8cb`);
+    }
+    k = 1;
+  } else {
+    root.style.setProperty(`--colorfondo`, `#f8e8cb`);
+    root.style.setProperty(`--fuenteColor`, `#45383a`);
+    root.style.setProperty(`--borderColor`, `#black`);
+    root.style.setProperty(`--borderSize`, `1px`);
+    root.style.setProperty(`--outlineCont`, `0px`);
+    buttonCss.style.setProperty(`text-transform`, `capitalize`);
+    buttonCss.style.setProperty(`background-color`, `#a79d9e`);
+    buttonCss.style.setProperty(
+      `padding`,
+      `calc(var(--fuenteDefault) * 0.3) calc(var(--fuenteDefault) * 1.5)`
+    );
+    buttonCss.style.setProperty(`font-weight`, `500`);
+    textAccess.style.setProperty(`color`, `black`);
+    for (p = 0; p < svgCss.length; p++) {
+      svgCss[p].style.setProperty(`fill`, `black`);
+    }
+    k = 0;
+  }
 }
 const botonMas = document.querySelector("#biggerText");
 botonMas.onclick = fontBigger;
@@ -60,36 +101,42 @@ const muestraRestantes = document.querySelector(".restantes span");
 const muestraResultado = document.querySelector(".pista");
 if (palabra.length >= 7) maxIntentos = 8;
 else maxIntentos = 6;
+
 const revisaLetra = (event) => {
-  if (maxIntentos != 0) {
-    const letraEscrita = event.key.toLowerCase();
-    let posiciones = [];
-    palabraRecorre.forEach((palabraRecorre, index) => {
-      if (palabraRecorre === letraEscrita) {
-        posiciones.push(index);
-        contadorWin.push(index);
-        let prueba = document.querySelector(`#letra_${index}`);
-        prueba.classList.remove("cards");
-        prueba.classList.add("ocultardiv");
-        console.log(contadorWin);
+  let pattern = /^[a-zA-Z]$/;
+  let test = event.key.match(pattern);
+  if (test) {
+    if (maxIntentos != 0) {
+      const letraEscrita = event.key.toLowerCase();
+      let posiciones = [];
+      palabraRecorre.forEach((palabraRecorre, index) => {
+        if (palabraRecorre === letraEscrita) {
+          posiciones.push(index);
+          contadorWin.push(index);
+          let prueba = document.querySelector(`#letra_${index}`);
+          prueba.classList.remove("cards");
+          prueba.classList.add("ocultardiv");
+          console.log(contadorWin);
+        }
+      });
+      if (palabraRecorre.length == contadorWin.length) {
+        muestraResultado.innerHTML = mensajeWin;
+        return;
       }
-    });
-    if (palabraRecorre.length == contadorWin.length) {
-      muestraResultado.innerHTML = mensajeWin;
-      return;
-    }
-    if (posiciones.length > 0) {
-    } else {
-      if (!letrasErroneas.includes(letraEscrita)) {
-        letrasErroneas.push(letraEscrita);
+      if (posiciones.length > 0) {
+      } else {
+        if (!letrasErroneas.includes(letraEscrita)) {
+          letrasErroneas.push(letraEscrita);
+        }
+        muestraErrorLet.innerHTML = ` ${letrasErroneas.join(", ")}`;
+        maxIntentos--;
+        muestraRestantes.innerHTML = maxIntentos;
       }
-      muestraErrorLet.innerHTML = ` ${letrasErroneas.join(", ")}`;
-      maxIntentos--;
-      muestraRestantes.innerHTML = maxIntentos;
+      inputFocus.value = "";
     }
-    inputFocus.value = "";
+    if (maxIntentos === 0) muestraResultado.innerHTML = mensajeErr;
+    return;
   }
-  if (maxIntentos === 0) muestraResultado.innerHTML = mensajeErr;
-  return;
 };
+
 document.addEventListener("keyup", revisaLetra);

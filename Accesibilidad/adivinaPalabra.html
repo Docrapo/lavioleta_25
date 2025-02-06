@@ -3,37 +3,62 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <title>ARRRRG-divina</title>
+    <title>Juego Adivina Palabras</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
 
   <body>
     <main>
-      <button id="biggerText">+</button>
-      <span>Text Size</span>
-      <button id="smallerText">-</button>
-      <button id="contrastColor">C</button>
-      <h1>Palabra a adivinar</h1>
+      <input tabindex="-1" type=" text" class="lletra" maxlength="1" />
+      <div class="barraAccess" id="barraAccessibility">
+        <div tabindex="0" rol="texto pequeño" id="smallerText">
+          <svg class="access" viewBox="0 0 481 120">
+            <path
+              d="M0,100V20C0,8.95,8.95,0,20,0h441c11.05,0,20,8.95,20,20v80c0,11.05-8.95,20-20,20H20c-11.05,0-20-8.95-20-20Z"
+            />
+          </svg>
+        </div>
+        <span class="access2">TEXT SIZE</span>
+
+        <div tabindex="0" rol="texto grande" id="biggerText">
+          <svg class="access" viewBox="0 0 481 481">
+            <path
+              d="M481,200.5v80c0,11.05-8.95,20-20,20h-160.5v160.5c0,11.05-8.95,20-20,20h-80c-11.05,0-20-8.95-20-20v-160.5H20c-11.05,0-20-8.95-20-20v-80c0-11.05,8.95-20,20-20h160.5V20c0-11.05,8.95-20,20-20h80c11.05,0,20,8.95,20,20v160.5h160.5c11.05,0,20,8.95,20,20Z"
+            />
+          </svg>
+        </div>
+        <div tabindex="0" rol="contraste de color" id="contrastColor">
+          <svg class="access" viewBox="0 0 512 508.47">
+            <path
+              d="M437.53,74.47C391.52,28.46,327.96,0,257.77,0l-.08.02-3.46-.02c-3.94,0-7.87.09-11.77.27h-1.54v.07c-64.89,3.35-123.37,31.05-166.45,74.13C28.46,120.48,0,184.04,0,254.23s28.46,133.76,74.47,179.77c43.08,43.08,101.55,70.78,166.45,74.12v.07h1.54c3.9.18,7.83.28,11.77.28l3.46-.03.08.03c70.19,0,133.75-28.46,179.76-74.47,46-46.01,74.47-109.58,74.47-179.77s-28.47-133.75-74.47-179.76ZM240.92,452.67c-102.86-7.71-183.92-93.6-183.92-198.44S138.06,63.5,240.92,55.79v396.88Z"
+            />
+          </svg>
+        </div>
+      </div>
+      <h1 tabindex="0">Palabra a adivinar</h1>
 
       <div class="content">
-        <input type=" text" class="lletra" maxlength="1" />
+        <!-- <input tabindex="-1" type=" text" class="lletra" maxlength="1" /> -->
 
         <div class="inputs"></div>
 
         <hr id="linea" />
 
         <div class="detalles">
-          <p class="pista">Pista: <span></span></p>
-          <p class="restantes">Intentos restantes: <span></span></p>
-          <p class="letrasErroneas">Letras erroneas: <span></span></p>
+          <p tabindex="0" rol="pista" class="pista">Pista: <span></span></p>
+          <p tabindex="0" class="restantes">
+            Intentos restantes: <span></span>
+          </p>
+          <p tabindex="0" class="letrasErroneas">
+            Letras erroneas: <span></span>
+          </p>
         </div>
-        <div class="mostra"></div>
+        <div tabindex="0" class="mostra"></div>
         <div id="boton">
-          <button class="reset-btn">Adivinar Palabra</button>
+          <button tabindex="-1" class="reset-btn">Adivinar Palabra</button>
         </div>
       </div>
     </main>
-
     <script src="js/listadoPalabras.js"></script>
     <script src="js/mensajes.js"></script>
     <script src="js/script.js"></script>
