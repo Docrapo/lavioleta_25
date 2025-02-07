@@ -6,7 +6,6 @@ const root = document.querySelector(":root");
 const buttonCss = document.querySelector("button.reset-btn");
 const svgCss = document.querySelectorAll("svg.access");
 const textAccess = document.querySelector(".access2");
-console.log(svgCss);
 function fontBigger() {
   if (fontSize != 2.4) {
     fontSize = fontSize + 0.2;
@@ -62,10 +61,13 @@ function contrasteAcces() {
 }
 const botonMas = document.querySelector("#biggerText");
 botonMas.onclick = fontBigger;
+botonMas.onkeypress = fontBigger;
 const botonMenos = document.querySelector("#smallerText");
 botonMenos.onclick = fontSmaller;
+botonMenos.onkeypress = fontSmaller;
 const botonContrast = document.querySelector("#contrastColor");
 botonContrast.onclick = contrasteAcces;
+botonContrast.onkeypress = contrasteAcces;
 
 setTimeout(function () {
   inputFocus.focus();
@@ -116,7 +118,6 @@ const revisaLetra = (event) => {
           let prueba = document.querySelector(`#letra_${index}`);
           prueba.classList.remove("cards");
           prueba.classList.add("ocultardiv");
-          console.log(contadorWin);
         }
       });
       if (palabraRecorre.length == contadorWin.length) {
@@ -140,3 +141,11 @@ const revisaLetra = (event) => {
 };
 
 document.addEventListener("keyup", revisaLetra);
+document.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowUp") {
+    fontBigger();
+  }
+  if (e.key === "ArrowDown") {
+    fontSmaller();
+  }
+});
