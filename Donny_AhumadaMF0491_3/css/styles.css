@@ -1,0 +1,103 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+*,
+*::before,
+*::after {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; /* IMPORTANTE: Hace que mis tamaños dependan del width que le de a la caja (elemento), sin contar el tamaño de bordes o paddings */
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  width: 100%;
+  /* height: 100%; */
+  /* Le quito el height porque afecta mi STICKY, de tenerlo la barra que quiero se desplace y quede quita lo hará solo hasta la altura asignada en este body, por definición, todo lo que le haga a un padre de un STICKY puede afectarle */
+}
+header {
+  display: flex;
+  height: 10vh;
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(101, 101, 101);
+}
+.access {
+  width: 20px;
+  height: 20px;
+  fill: black;
+  margin: 0 1rem;
+}
+main {
+  width: 100vh;
+  margin: auto;
+}
+input[type="text"] {
+  display: block;
+  margin-top: 25px;
+  width: 220px;
+  height: 30px;
+  border-radius: 5px;
+}
+button {
+  margin-top: 25px;
+  width: 160px;
+  height: 30px;
+  border-radius: 5px;
+  font-weight: 700;
+  background-color: rgb(179, 203, 255);
+}
+button:hover {
+  background-color: rgb(48, 87, 172);
+  color: azure;
+}
+section#textosIntro {
+  padding: 3rem 2rem 0 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+section#entradas2 {
+  padding: 3rem 2rem 0 2rem;
+  font-size: 1.2rem;
+}
+section#entradas {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+p.entradaA {
+  display: flex;
+  padding: 3rem 3rem 0 3rem;
+  font-size: 1.2rem;
+}
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  width: 6vw;
+  height: 8vh;
+  border-radius: 1vw;
+  background-color: rgb(179, 227, 216);
+  font-size: 2rem;
+}
