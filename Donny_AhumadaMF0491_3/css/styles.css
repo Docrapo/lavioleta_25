@@ -1,6 +1,35 @@
 :root {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+  --fuenteDefault: 1rem;
+}
+.default {
+  --colorA: #ad0000; /* AAA para fondo #fff6d6 */
+  --colorB: #006300; /* AAA para fondo #fff6d6 */
+  --colorC: #fff6d6;
+  --colorD: rgb(32, 32, 32);
+  --colorE: brown; /* color button disabled */
+  --colorF: rgb(199, 120, 120); /* color text button disabled */
+  --colorG: rgb(179, 203, 255); /* color button normal */
+  --colorH: #ff8687; /* color boton SALIR */
+  --colorI: #731313; /* color boton SALIR:hover */
+  --sizeA: 1rem;
+  --pesoA: 700;
+  background-color: var(--colorC);
+}
+.contraste {
+  --colorA: #ff8687; /* AAA para fondo #202020 */
+  --colorB: #5cbf5c; /* AAA para fondo #202020 */
+  --colorC: rgb(5, 3, 3);
+  --colorD: #fff6d6;
+  --colorE: #062528;
+  --colorF: #105d64;
+  --colorG: #105d64; /* BGbutton normal AAA para text #fff6d6 */
+  --colorH: #ff8687; /* color boton SALIR */
+  --colorI: #731313; /* color boton SALIR:hover */
+  --sizeA: 1rem;
+  --pesoA: 800;
+  background-color: #202020;
 }
 *,
 *::before,
@@ -9,6 +38,7 @@
   margin: 0px;
   box-sizing: border-box; /* IMPORTANTE: Hace que mis tamaños dependan del width que le de a la caja (elemento), sin contar el tamaño de bordes o paddings */
 }
+
 article,
 aside,
 details,
@@ -23,81 +53,206 @@ section {
   display: block;
 }
 html {
+  width: 100%;
   scroll-behavior: smooth;
 }
-html,
-body {
-  width: 100%;
-  /* height: 100%; */
-  /* Le quito el height porque afecta mi STICKY, de tenerlo la barra que quiero se desplace y quede quita lo hará solo hasta la altura asignada en este body, por definición, todo lo que le haga a un padre de un STICKY puede afectarle */
-}
+/* MARK:NAV 
+*/
 header {
   display: flex;
-  height: 10vh;
+  position: sticky;
+  top: 0;
+  height: min(10vh, 16vw);
   color: white;
-  font-size: 3rem;
   text-align: center;
   justify-content: center;
   align-items: center;
   background-color: rgb(101, 101, 101);
 }
+nav {
+  width: 98vw;
+  display: flex;
+  font-size: 2rem;
+}
+.titulo_juego {
+  display: inline;
+  width: 70vw;
+}
+div.barraAccess {
+  display: flex;
+  flex-flow: row nowrap;
+  font-weight: 700;
+  align-items: center;
+  font-size: 0.9rem;
+}
 .access {
   width: 20px;
   height: 20px;
   fill: black;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
+
+/* MARK:CONT 
+*/
 main {
-  width: 100vh;
+  display: flex;
+  width: 80%;
   margin: auto;
 }
+article {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: left;
+}
+section#textosIntro {
+  padding: 3rem 0rem 0rem 0rem;
+}
+section#entradas2 {
+  padding: 3rem 0rem 0rem 0rem;
+}
+section#entradas {
+  display: flex;
+  flex-flow: row wrap;
+}
+#entradas > div {
+  padding: 0rem 0rem 0rem 1.5rem;
+}
+div#contenedor_juego {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+/* MARK:C_input
+*/
 input[type="text"] {
   display: block;
   margin-top: 25px;
-  width: 220px;
-  height: 30px;
+  width: calc(206px + (var(--fuenteDefault) * 2)); /* antes 220px */
+  height: calc(26px + (var(--fuenteDefault) * 0.8)); /* antes 30px */
+  font-size: calc(var(--fuenteDefault) * 0.9);
+  padding-left: calc(0.45 * var(--fuenteDefault));
+  font-weight: var(--pesoA);
   border-radius: 5px;
 }
 button {
   margin-top: 25px;
-  width: 160px;
-  height: 30px;
-  border-radius: 5px;
-  font-weight: 700;
+  width: calc(156px + (var(--fuenteDefault) * 2)); /* antes 160px */
+  height: calc(26px + (var(--fuenteDefault) * 0.8)); /* antes 30px */
+  font-size: calc(var(--fuenteDefault) * 0.9);
+  border-radius: calc(0.45 * var(--fuenteDefault)); /* antes 5px */
+  font-weight: var(--pesoA);
   background-color: rgb(179, 203, 255);
 }
 button:hover {
   background-color: rgb(48, 87, 172);
   color: azure;
 }
-section#textosIntro {
-  padding: 3rem 2rem 0 2rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-section#entradas2 {
-  padding: 3rem 2rem 0 2rem;
-  font-size: 1.2rem;
-}
-section#entradas {
+button.boton_juego {
   display: flex;
-  flex-flow: row wrap;
+  margin: 15px;
+  width: calc(42px + (var(--fuenteDefault) * 0.9));
+  height: calc(42px + (var(--fuenteDefault) * 0.9));
+  border-radius: 5px;
   justify-content: center;
   align-items: center;
+  font-size: calc(1rem + var(--fuenteDefault));
+  color: var(--colorD);
+  font-weight: 700;
+  background-color: var(--colorG);
 }
-p.entradaA {
-  display: flex;
-  padding: 3rem 3rem 0 3rem;
-  font-size: 1.2rem;
+button.boton_juego:hover {
+  background-color: var(--colorE);
+  color: var(--colorF);
 }
-label {
+button:disabled,
+button[disabled] {
+  background-color: var(--colorE);
+  color: var(--colorF);
+}
+button:disabled:hover,
+button[disabled]:hover {
+  background-color: var(--colorE);
+  color: var(--colorF);
+}
+button#buttonC1 {
+  margin-right: 1rem;
+}
+button#buttonC2 {
+  margin-left: 1rem;
+  background-color: var(--colorH);
+}
+button#buttonC2:hover {
+  background-color: var(--colorI);
+}
+/* MARK:C_p
+*/
+p.text_main {
   display: flex;
+  padding: 0rem 1.5rem 0 1.5rem;
+  color: var(--colorD);
+  font-weight: var(--pesoA);
+  font-size: calc(var(--fuenteDefault) + 0.4rem);
+}
+p.msg_input {
+  padding: 2rem 1.5rem 0 1.5rem;
+  color: var(--colorD);
+  font-size: var(--sizeA);
+  font-weight: var(--pesoA);
+  font-size: calc(var(--fuenteDefault) + 0.2rem);
+}
+p.msg_pista {
+  padding: 1rem 1.5rem 0 1.5rem;
+  color: var(--colorD);
+  font-size: var(--sizeA);
+  font-weight: var(--pesoA);
+  font-size: var(--fuenteDefault);
+}
+p.msg_error {
+  padding: 1rem 1.5rem 0 1.5rem;
+  color: var(--colorA);
+  font-size: var(--sizeA);
+  font-weight: var(--pesoA);
+  font-size: var(--fuenteDefault);
+}
+p.msg_correcto {
+  padding: 1rem 1.5rem 0 1.5rem;
+  color: var(--colorB);
+  font-size: var(--sizeA);
+  font-weight: var(--pesoA);
+  font-size: var(--fuenteDefault);
+}
+div.msg_reiniciar {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 1rem;
-  width: 6vw;
-  height: 8vh;
-  border-radius: 1vw;
-  background-color: rgb(179, 227, 216);
-  font-size: 2rem;
+  padding: 2rem 1.5rem 0 1.5rem;
+  color: var(--colorD);
+  font-weight: var(--pesoA);
+  font-size: calc(var(--fuenteDefault) + 0.4rem);
+}
+div.msg_reiniciar > div {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    font-size: 1.3rem;
+  }
+  .access {
+    width: 16px;
+    height: 16px;
+  }
+  div.barraAccess {
+    font-size: 0.7rem;
+  }
+  .titulo_juego {
+    width: 60vw;
+  }
+  main {
+    width: 98%;
+  }
 }

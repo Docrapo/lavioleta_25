@@ -1,8 +1,10 @@
 let clave, valor, tema;
 if (localStorage.getItem(localStorage.key(0)) === null) {
+  /* console.log(localStorage.getItem(localStorage.key(0))); */
   clave = "tema";
   valor = "default";
   localStorage.setItem(clave, valor);
+  /* console.log(localStorage.getItem(localStorage.key(0))); */
   document.body.classList.add("default");
 } else {
   tema = localStorage.getItem(localStorage.key(0));
@@ -10,11 +12,13 @@ if (localStorage.getItem(localStorage.key(0)) === null) {
 }
 const contrasteActiva = () => {
   if (localStorage.getItem(localStorage.key(0)) === "default") {
+    /* console.log(localStorage.key(0)); */
     valor = "contraste";
     localStorage.setItem(localStorage.key(0), valor);
     tema = localStorage.getItem(localStorage.key(0));
     document.body.classList.replace("default", tema);
   } else if (localStorage.getItem(localStorage.key(0)) === "contraste") {
+    /* console.log(localStorage.key(0)); */
     valor = "default";
     localStorage.setItem(localStorage.key(0), valor);
     tema = localStorage.getItem(localStorage.key(0));
@@ -87,6 +91,7 @@ const capturarNumA = () => {
   botonB1.addEventListener("click", () => {
     if (parseInt(catchNumA.value) <= 10 && parseInt(catchNumA.value) > 0) {
       numeroA = catchNumA.value;
+      /* console.log(numeroA); */
       entradas2a.innerHTML = `<p class="msg_correcto">Tu primer número es el: ${numeroA}`;
       capturarNumB();
     } else {
@@ -100,6 +105,7 @@ const capturarNumB = () => {
   catchNumB = document.querySelector("#numeroBhtml");
   const botonB2 = document.querySelector("#buttonB2");
   botonB2.addEventListener("click", () => {
+    /* console.log(parseInt(catchNumB.value)); */
     if (parseInt(catchNumB.value) >= 30 && parseInt(catchNumB.value) <= 40) {
       numeroB = catchNumB.value;
       nroCorrecto = Math.floor(
@@ -107,6 +113,7 @@ const capturarNumB = () => {
           Math.ceil(numeroA)
       );
       entradas3.innerHTML = `<p class="msg_correcto">Tu segundo número es el: ${numeroB}`;
+      /* console.log(nroCorrecto); */
       setTimeout(() => {
         juega();
       }, 1000);
@@ -137,6 +144,7 @@ const juega = () => {
     card.appendChild(contenido);
     card.id = `num_${u}`;
     card.className = `boton_juego`;
+    /* console.log(card.id); */
     divJuego.appendChild(card);
     card.addEventListener("click", (e) => {
       const botones = document.querySelectorAll(".boton_juego");
@@ -153,6 +161,7 @@ const juega = () => {
         } de 5</p>`;
       }
       contadorClick = contadorClick + 1;
+      /* console.log(contadorClick); */
       e.target.disabled = true;
       let mensajeFin = `<div class="msg_reiniciar"><p>¿Te gustaría volver a jugar?</p><div><button id="buttonC1">REINICIAR</button><button id="buttonC2">SALIR</button></div></div>`;
       if (contadorClick === 5 && nroCorrecto != u) {
