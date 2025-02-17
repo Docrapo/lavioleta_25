@@ -17,7 +17,31 @@ const cliente = mostrarDatos(nombreCliente, ahorro);
 console.log(cliente);
  */
 import { nombreCliente, ahorro, Cliente } from "./cliente.js";
+
+import { Empresa } from "./empresa.js";
+
 const cliente = new Cliente(nombreCliente, ahorro);
 console.log(cliente.nombre);
 console.log(cliente.ahorro);
 console.log(cliente.mostrarDatos());
+
+let nombreEmpresa = "International Holding de masticadores de Chicle",
+  ahorroEmpresa = 2000000,
+  categoriaEmpresa = "Contrucción";
+
+let empresa = new Empresa(nombreEmpresa, ahorroEmpresa, categoriaEmpresa);
+console.log(empresa.mostrarInformacion());
+
+console.log(empresa);
+console.log(nombreEmpresa);
+console.log(ahorroEmpresa);
+console.log(categoriaEmpresa);
+console.log(empresa.mostrarInformacion());
+
+let empresa2 = new Empresa("Grisfos GRIFOS", 2000, "Fuentes públicas"); //defino otras tres variables esta vez directamente en el constructor
+
+console.log(empresa2);
+console.log(empresa2.nombre);
+console.log(empresa2.ahorro);
+console.log(empresa2.categoria);
+console.log(empresa2.mostrarInformacion());
