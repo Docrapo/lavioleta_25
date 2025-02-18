@@ -1,19 +1,19 @@
-const cargarJSONBtn3 = document.querySelector("#btn3");
-const mostra3 = document.querySelector("#muestra");
+import { mostra } from "./text.js";
+export const btn3 = document.querySelector("#btn3");
 
 const mostrarHTML3 = (empleados) => {
-  mostra3.innerHTML = "";
+  mostra.innerHTML = "";
   empleados.forEach((empleado) => {
     empleado = `
  <p>ID: ${empleado.id}</p>
  <p>Empleado: ${empleado.nombre}</p>
  <p>Empresa: ${empleado.empresa}</p>
  <p>Trabajo: ${empleado.puesto}</p> <hr />`;
-    mostra3.innerHTML += empleado;
+    mostra.innerHTML += empleado;
   });
 };
 
-const obtenerDatos3 = () => {
+export const obtenerDatos = () => {
   fetch("./server/empleados.json")
     .then((response) => {
       console.log(response);
@@ -34,4 +34,5 @@ const obtenerDatos3 = () => {
     });
 };
 
-cargarJSONBtn3.addEventListener("click", obtenerDatos3);
+/* btn3.addEventListener("click", obtenerDatos);
+ */

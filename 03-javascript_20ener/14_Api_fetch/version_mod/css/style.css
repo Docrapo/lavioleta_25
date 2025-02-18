@@ -1,0 +1,37 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+}
+div#muestra {
+  margin-top: 3rem;
+}
+.perfiles {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 1rem 0;
+}
+div.txt {
+  display: block;
+  align-items: top;
+  padding-top: 1rem;
+}
+div.txt h4 {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+}
+div.txt p {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+}
+.perfiles > div > img {
+  width: 130px;
+}
+.id {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  width: 8%;
+  font-size: 2.5rem;
+}

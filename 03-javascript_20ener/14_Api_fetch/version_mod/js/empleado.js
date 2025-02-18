@@ -1,17 +1,17 @@
-const cargarJSONBtn = document.querySelector("#btn2");
-const mostra2 = document.querySelector("#muestra");
+import { mostra } from "./text.js";
+export const btn2 = document.querySelector("#btn2");
 
 const mostrarHTML2 = (resultado) => {
-  mostra2.innerHTML = "";
+  mostra.innerHTML = "";
   const usuario = `
  <p>ID: ${resultado.id}</p>
  <p>Empleado: ${resultado.nombre}</p>
  <p>Empresa: ${resultado.empresa}</p>
  <p>Trabajo: ${resultado.puesto}</p>`;
-  mostra2.innerHTML = usuario;
+  mostra.innerHTML = usuario;
 };
 
-const obtenerDatos = () => {
+export const obtenerDatos = () => {
   fetch("./server/empleado.json")
     .then((response) => {
       // response es solo un nombre para asignarle a lo que entrega o recoge el fetch
@@ -34,4 +34,4 @@ const obtenerDatos = () => {
     });
 };
 
-cargarJSONBtn.addEventListener("click", obtenerDatos);
+/* btn2.addEventListener("click", obtenerDatos); */
