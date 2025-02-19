@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¿Qué tiempo hace hoy?</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main class="cuerpo">
+      <section class="contenedor">
+        <h1>¿Que tiempo hace hoy?</h1>
+        <div id="print"></div>
+        <form method="get" name="form_weather">
+          <fieldset>
+            <select name="paises" id="countries">
+              <option value="es">España</option>
+              <option value="fr">Francia</option>
+              <option value="it">Italia</option>
+              <option value="pt">Portugal</option>
+            </select>
+            <label for="ciudad">Ciudad</label>
+            <input type="text" name="ciudad" id="city" />
+            <input
+              type="button"
+              id="enviar_consulta"
+              name="btn_enviar"
+              value="VER el tiempo de Hoy"
+            />
+          </fieldset>
+        </form>
+      </section>
+    </main>
+    <script src="js/script.js"></script>
+  </body>
+</html>
